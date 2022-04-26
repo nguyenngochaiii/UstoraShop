@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::resource('cart', CartController::class);
+Route::resource('product', ProductController::class);
+Route::resource('shop', ShopController::class);
+Route::resource('checkout', CheckoutController::class);
