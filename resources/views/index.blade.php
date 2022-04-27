@@ -44,7 +44,7 @@
                             iPhone <span class="primary">12 <strong>Plus</strong></span>
                         </h2>
                         <h4 class="caption subtitle">Dual SIM</h4>
-                        <a class="caption button-radius" href="shop"><span class="icon"></span>Shop now</a>
+                        <a class="caption button-radius" href="products"><span class="icon"></span>Shop now</a>
                     </div>
                 </li>
                 <li><img src="./themes/ustora/img/h4-slide2.png" alt="Slide">
@@ -53,7 +53,7 @@
                             by one, get one <span class="primary">50% <strong>off</strong></span>
                         </h2>
                         <h4 class="caption subtitle">school supplies & backpacks.*</h4>
-                        <a class="caption button-radius" href="shop"><span class="icon"></span>Shop now</a>
+                        <a class="caption button-radius" href="products"><span class="icon"></span>Shop now</a>
                     </div>
                 </li>
                 <li><img src="./themes/ustora/img/h4-slide3.png" alt="Slide">
@@ -62,7 +62,7 @@
                             Apple <span class="primary">Store <strong>Ipod</strong></span>
                         </h2>
                         <h4 class="caption subtitle">Select Item</h4>
-                        <a class="caption button-radius" href="shop"><span class="icon"></span>Shop now</a>
+                        <a class="caption button-radius" href="products"><span class="icon"></span>Shop now</a>
                     </div>
                 </li>
                 <li><img src="./themes/ustora/img/h4-slide4.png" alt="Slide">
@@ -71,7 +71,7 @@
                             Apple <span class="primary">Store <strong>Ipod</strong></span>
                         </h2>
                         <h4 class="caption subtitle">& Phone</h4>
-                        <a class="caption button-radius" href="shop"><span class="icon"></span>Shop now</a>
+                        <a class="caption button-radius" href="products"><span class="icon"></span>Shop now</a>
                     </div>
                 </li>
             </ul>
@@ -256,7 +256,7 @@
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Top Sellers</h2>
-                        <a href="shop" class="wid-view-more">View All</a>
+                        <a href="products" class="wid-view-more">View All</a>
                         <div class="single-wid-product">
                             <a href="product"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
                                     class="product-thumb"></a>
@@ -307,7 +307,7 @@
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Recently Viewed</h2>
-                        <a href="shop" class="wid-view-more">View All</a>
+                        <a href="products" class="wid-view-more">View All</a>
                         <div class="single-wid-product">
                             <a href="product"><img src="./themes/ustora/img/product-thumb-4.jpg" alt=""
                                     class="product-thumb"></a>
@@ -358,7 +358,7 @@
                 <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Top New</h2>
-                        <a href="Shop" class="wid-view-more">View All</a>
+                        <a href="products" class="wid-view-more">View All</a>
                         <div class="single-wid-product">
                             <a href="product"><img src="./themes/ustora/img/product-thumb-3.jpg" alt=""
                                     class="product-thumb"></a>

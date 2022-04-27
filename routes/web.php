@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 
 /*
@@ -21,7 +20,13 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::resource('products', ProductController::class);
 Route::resource('cart', CartController::class);
-Route::resource('product', ProductController::class);
-Route::resource('shop', ShopController::class);
-Route::resource('checkout', CheckoutController::class);
+Route::resource('checkout',CheckoutController::class);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

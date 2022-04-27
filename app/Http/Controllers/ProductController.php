@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('components.product');
+        $products = DB::table('products')->limit(12)->get();
+
+        return view('layout.products', compact('products'));
     }
 
     /**
