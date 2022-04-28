@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('product_id');
             $table->bigInteger('coupon_id');
-            $table->bigInteger('user_id');
             $table->integer('quantity')->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
