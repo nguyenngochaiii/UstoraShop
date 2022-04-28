@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->limit(12)->get();
+        $products = Product::where('quantity','!=',0)->paginate(12);
 
         return view('layout.products', compact('products'));
     }
@@ -47,8 +48,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return view('layout.product');
+    {   
+        $product = Product::findOrFail($id);
+
+        return view('layout.product', compact('product'));
     }
 
     /**
