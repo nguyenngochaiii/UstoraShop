@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('products', ProductController::class);
+Route::resource('product', ProductController::class);
 Route::resource('cart', CartController::class);
 Route::resource('checkout',CheckoutController::class);
 
