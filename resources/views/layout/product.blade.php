@@ -14,15 +14,15 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="./themes/ustora/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/themes/ustora/css/bootstrap.min.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./themes/ustora/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/themes/ustora/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./themes/ustora/css/owl.carousel.css">
-    <link rel="stylesheet" href="./themes/ustora/style.css">
-    <link rel="stylesheet" href="./themes/ustora/css/responsive.css">
+    <link rel="stylesheet" href="/themes/ustora/css/owl.carousel.css">
+    <link rel="stylesheet" href="/themes/ustora/style.css">
+    <link rel="stylesheet" href="/themes/ustora/css/responsive.css">
 </head>
 
 <body>
@@ -61,28 +61,28 @@
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
                         <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <img src="/themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="">Sony Smart TV - 2020</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
                             </div>
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <img src="/themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="">Sony Smart TV - 2020</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
                             </div>
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <img src="/themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="">Sony Smart TV - 2020</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
                             </div>
                         </div>
                         <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <img src="/themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
                             <h2><a href="">Sony Smart TV - 2020</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$100.00</del>
@@ -114,22 +114,22 @@
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="./themes/ustora/img/product-2.jpg" alt="">
+                                        <img src="/themes/ustora/img/{{ $product->image}}.jpg" alt="">
                                     </div>
 
                                     <div class="product-gallery">
-                                        <img src="./themes/ustora/img/product-thumb-1.jpg" alt="">
-                                        <img src="./themes/ustora/img/product-thumb-2.jpg" alt="">
-                                        <img src="./themes/ustora/img/product-thumb-3.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-thumb-1.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-thumb-2.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-thumb-3.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="product-inner">
-                                    <h2 class="product-name">Sony Smart TV - 2020</h2>
+                                    <h2 class="product-name">{{ $product->name }}</h2>
                                     <div class="product-inner-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
+                                        <ins>{{ $product->price}}</ins> <del>$100.00</del>
                                     </div>
 
                                     <form action="" class="cart">
@@ -206,7 +206,7 @@
                             <div class="related-products-carousel">
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="./themes/ustora/img/product-1.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-1.jpg" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add
                                                 to cart</a>
@@ -223,7 +223,7 @@
                                 </div>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="./themes/ustora/img/product-2.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-2.jpg" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add
                                                 to cart</a>
@@ -239,7 +239,7 @@
                                 </div>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="./themes/ustora/img/product-3.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-3.jpg" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add
                                                 to cart</a>
@@ -256,7 +256,7 @@
                                 </div>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="./themes/ustora/img/product-4.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-4.jpg" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add
                                                 to cart</a>
@@ -273,7 +273,7 @@
                                 </div>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="./themes/ustora/img/product-5.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-5.jpg" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add
                                                 to cart</a>
@@ -290,7 +290,7 @@
                                 </div>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="./themes/ustora/img/product-6.jpg" alt="">
+                                        <img src="/themes/ustora/img/product-6.jpg" alt="">
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add
                                                 to cart</a>
@@ -322,18 +322,18 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <!-- jQuery sticky menu -->
-    <script src="./themes/ustora/js/owl.carousel.min.js"></script>
-    <script src="./themes/ustora/js/jquery.sticky.js"></script>
+    <script src="/themes/ustora/js/owl.carousel.min.js"></script>
+    <script src="/themes/ustora/js/jquery.sticky.js"></script>
 
     <!-- jQuery easing -->
-    <script src="./themes/ustora/js/jquery.easing.1.3.min.js"></script>
+    <script src="/themes/ustora/js/jquery.easing.1.3.min.js"></script>
 
     <!-- Main Script -->
-    <script src="./themes/ustora/js/main.js"></script>
+    <script src="/themes/ustora/js/main.js"></script>
 
     <!-- Slider -->
-    <script type="text/javascript" src="./themes/ustora/js/bxslider.min.js"></script>
-    <script type="text/javascript" src="./themes/ustora/js/script.slider.js"></script>
+    <script type="text/javascript" src="/themes/ustora/js/bxslider.min.js"></script>
+    <script type="text/javascript" src="/themes/ustora/js/script.slider.js"></script>
 </body>
 
 </html>
