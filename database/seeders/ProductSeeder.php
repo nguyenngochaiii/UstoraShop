@@ -26,6 +26,8 @@ class ProductSeeder extends Seeder
                 'price' => rand(1,2000),
                 'image' => 'product-' . rand(1,5),
                 'quantity' => rand(1,50),
+                'tag' => $faker->word,
+                'description' => $faker->text($maxNbChars = 100),
             ];
         }
         DB::table('products')->insert($data);

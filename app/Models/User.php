@@ -49,12 +49,12 @@ class User extends Authenticatable
 
     public function cart()
     {
-        return $this->hasOne(Cart::class,'user_id', 'cart_id');
+        return $this->hasOne(Cart::class);
     }
 
     public function orders()
     {
-        return $this->hasMany(Order::class,'user_id', 'order_id');
+        return $this->hasMany(Order::class);
     }
 
     public function products()
@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'user_id');
+        return $this->hasMany(Review::class);
     }
 
     public function coupons()

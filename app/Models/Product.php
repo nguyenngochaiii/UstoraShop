@@ -25,21 +25,21 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'product_id', 'order_id');
+        return $this->hasMany(Order::class);
     }
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'product_id');
+        return $this->hasMany(Review::class);
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'product_id', 'tag_id');
+        return $this->belongsToMany(Tag::class);
     }
 
     public function categorys()
     {
-        return $this->hasMany(Tag::class, 'product_id', 'category_id');
+        return $this->hasMany(Tag::class);
     }
 }

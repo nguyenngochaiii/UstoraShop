@@ -22,11 +22,11 @@ class Order extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class,'cart_id', 'user_id');
+        return $this->belongsToMany(User::class);
     }
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'order_id', 'product_id');
+        return $this->belongsToMany(Product::class);
     }
 }
