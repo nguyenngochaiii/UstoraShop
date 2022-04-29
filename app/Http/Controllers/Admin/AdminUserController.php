@@ -2,24 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use DB;
-use App\Models\Product;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Http\Request;
+use App\Models\User;
+use DB;
 
-class AdminProductController extends Controller
+class AdminUserController extends Controller
 {
     /**
-     * Display a listing of the resource.   
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $products = Product::paginate(20);
-        return view('admin.products.index')->with(compact('products'));
+        $users = User::paginate(20);
+        return view('admin.users.index')->with(compact('users'));
     }
 
     /**
@@ -29,7 +27,7 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -38,23 +36,29 @@ class AdminProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProductRequest  $request)
+    public function store(Request $request)
     {
         $data = $request->only([
             'name',
-            'price',
-            'quantity',
+            'username',
+            'password',
+            'phone',
+            'email',
+            'address',
+            'sex',
+            'date_of_birth',
         ]);
-        
+
         try {
-            $product = Product::create($data);
+            $user = User::create($data);
         } catch (\Exception $e) {
             \Log::error($e);
             
-            return back()->withInput($data)->with('error','Update Failed  Sir !!'); //err meg
+            return back()->withInput($data)->with('error','Something Wrong Sir !!'); //err meg
+            
         }
-         
-        return redirect()->route('admin.products.edit' , $product->id)->with('status', 'Create success!');
+        
+        return redirect()->route('admin.users.edit' , $user->id)->with('status', 'Create success!');
     }
 
     /**
@@ -65,9 +69,9 @@ class AdminProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('components.product')->with(compact('product'));
+        return view('layout.product', compact('user'));
     }
 
     /**
@@ -78,8 +82,8 @@ class AdminProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.products.edit', compact('product'));
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -89,25 +93,31 @@ class AdminProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $data = $request->only([
             'name',
-            'price',
-            'quantity',
+            'username',
+            'password',
+            'phone',
+            'email',
+            'address',
+            'sex',
+            'date_of_birth',
         ]);
 
         try {
-            $product->update($data);
+            $user = User::update($data);
         } catch (\Exception $e) {
             \Log::error($e);
             
-            return back()->withInput($data)->with('error','Update Failed  Sir !!'); //err meg
+            return back()->withInput($data)->with('error','Something Wrong Sir !!'); //err meg
+            
         }
 
-        return redirect()->route('admin.products.edit' , $product->id)->with('status', 'Update success!');
+        return redirect()->route('admin.users.edit' , $user->id)->with('status', 'Create success!');
     }
 
     /**
@@ -118,16 +128,16 @@ class AdminProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
+        $user = User::findOrFail($id);
 
         try {
-            $product->delete();
+            $user->delete();
         } catch (\Exception $e) {
             \Log::error($e);
             
             return back()->with('error','Delete Failed  Sir !!'); //err meg
         }
 
-        return redirect()->route('admin.products.index')->with('status', 'Delete success!');
+        return redirect()->route('admin.users.index')->with('status', 'Delete success!');
     }
 }

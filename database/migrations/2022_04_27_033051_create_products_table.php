@@ -15,12 +15,16 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
             $table->string('name')->nullable();
             $table->float('price')->nullable();
-            $table->string('image')->nullable();
+            $table->float('discount')->nullable();
             $table->integer('quantity')->nullable();
+            $table->string('image')->nullable();
             $table->string('description')->nullable();
+            $table->string('detail')->nullable();
             $table->string('tag')->nullable();
+            $table->string('rate_star')->nullable();
             $table->timestamps();
         });
     }

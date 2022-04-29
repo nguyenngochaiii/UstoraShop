@@ -125,7 +125,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                             cart</a>
-                                        <a href="product" class="view-details-link"><i class="fa fa-link"></i> See
+                                        <a href="products" class="view-details-link"><i class="fa fa-link"></i> See
                                             details</a>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                             cart</a>
-                                        <a href="product" class="view-details-link"><i class="fa fa-link"></i> See
+                                        <a href="products" class="view-details-link"><i class="fa fa-link"></i> See
                                             details</a>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                             cart</a>
-                                        <a href="product" class="view-details-link"><i class="fa fa-link"></i> See
+                                        <a href="products" class="view-details-link"><i class="fa fa-link"></i> See
                                             details</a>
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                             cart</a>
-                                        <a href="product" class="view-details-link"><i class="fa fa-link"></i> See
+                                        <a href="products" class="view-details-link"><i class="fa fa-link"></i> See
                                             details</a>
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                             cart</a>
-                                        <a href="product" class="view-details-link"><i class="fa fa-link"></i> See
+                                        <a href="products" class="view-details-link"><i class="fa fa-link"></i> See
                                             details</a>
                                     </div>
                                 </div>
@@ -209,7 +209,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to
                                             cart</a>
-                                        <a href="product" class="view-details-link"><i class="fa fa-link"></i> See
+                                        <a href="products" class="view-details-link"><i class="fa fa-link"></i> See
                                             details</a>
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@
                         <h2 class="product-wid-title">Top Sellers</h2>
                         <a href="products" class="wid-view-more">View All</a>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Sony Smart TV - 2022</a></h2>
                             <div class="product-wid-rating">
@@ -273,7 +273,7 @@
                             </div>
                         </div>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-2.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-2.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Apple new mac book 2022</a></h2>
                             <div class="product-wid-rating">
@@ -288,7 +288,7 @@
                             </div>
                         </div>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-3.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-3.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Apple new i phone 12</a></h2>
                             <div class="product-wid-rating">
@@ -309,7 +309,7 @@
                         <h2 class="product-wid-title">Recently Viewed</h2>
                         <a href="products" class="wid-view-more">View All</a>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-4.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-4.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Sony playstation microsoft</a></h2>
                             <div class="product-wid-rating">
@@ -324,7 +324,7 @@
                             </div>
                         </div>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Sony Smart Air Condtion</a></h2>
                             <div class="product-wid-rating">
@@ -339,7 +339,7 @@
                             </div>
                         </div>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-2.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-2.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Samsung gallaxy note 4</a></h2>
                             <div class="product-wid-rating">
@@ -360,7 +360,7 @@
                         <h2 class="product-wid-title">Top New</h2>
                         <a href="products" class="wid-view-more">View All</a>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-3.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-3.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Apple new i phone 12</a></h2>
                             <div class="product-wid-rating">
@@ -375,7 +375,7 @@
                             </div>
                         </div>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-4.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-4.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Samsung gallaxy note 4</a></h2>
                             <div class="product-wid-rating">
@@ -390,7 +390,7 @@
                             </div>
                         </div>
                         <div class="single-wid-product">
-                            <a href="product"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
+                            <a href="products"><img src="./themes/ustora/img/product-thumb-1.jpg" alt=""
                                     class="product-thumb"></a>
                             <h2><a href="product">Sony playstation microsoft</a></h2>
                             <div class="product-wid-rating">

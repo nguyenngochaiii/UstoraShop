@@ -265,7 +265,7 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Manage',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -279,6 +279,20 @@ return [
                         [
                             'text' => 'Create',
                             'url'  => 'admin/products/create',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'User',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'List',
+                            'url'  => 'admin/users/index',
+                        ],
+                        [
+                            'text' => 'Create',
+                            'url'  => 'admin/users/create',
                         ],
                     ],
                 ],
