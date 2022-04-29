@@ -42,12 +42,13 @@ class AdminUserController extends Controller
             'name',
             'username',
             'password',
+            'phone',
             'email',
             'address',
             'sex',
             'date_of_birth',
         ]);
-        
+
         try {
             $user = User::create($data);
         } catch (\Exception $e) {
@@ -100,6 +101,7 @@ class AdminUserController extends Controller
             'name',
             'username',
             'password',
+            'phone',
             'email',
             'address',
             'sex',

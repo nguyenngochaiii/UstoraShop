@@ -36,7 +36,7 @@
                 <label for="InputUserName">UserName</label>
                 <input type="text" name="username" class="form-control" id="InputUserName" placeholder="username"
                     value=" {{ $user->username }}">
-                @error('password')
+                @error('username')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -45,6 +45,14 @@
                 <input type="text" name="password" class="form-control" id="InputPassWord" placeholder="password"
                     value=" {{ $user->password }}">
                 @error('password')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputPhone">Phone<span class="text-danger">*</span></label>
+                <input type="text" name="phone" class="form-control" id="InputPhone" placeholder="email"
+                    value="{{ $user->phone }}">
+                @error('phone')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
