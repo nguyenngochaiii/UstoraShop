@@ -282,6 +282,20 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'text'    => 'User',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'List',
+                            'url'  => 'admin/users/index',
+                        ],
+                        [
+                            'text' => 'Create',
+                            'url'  => 'admin/users/create',
+                        ],
+                    ],
+                ],
             ],
         ],
         // ['header' => 'labels'],

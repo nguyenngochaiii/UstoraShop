@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('product_review', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
             $table->bigInteger('product_id');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->string('address')->nullable();
             $table->string('content')->nullable();
-            $table->string('rate_star')->nullable();
+            $table->string('rating')->nullable();
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('sex')->nullable();
             $table->string('username')->nullable()->after('password');
             $table->string('avatar')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -32,10 +33,12 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('address');
+            $table->dropColumn('phone');
             $table->dropColumn('date_of_birth');
             $table->dropColumn('sex');
             $table->dropColumn('username');
             $table->dropColumn('avatar');
+            $table->dropTimestamps();
         });
     }
 };

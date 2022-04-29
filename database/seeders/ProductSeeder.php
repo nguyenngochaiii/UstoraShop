@@ -24,6 +24,7 @@ class ProductSeeder extends Seeder
             $data[] = [
                 'name' => $faker->name,
                 'price' => rand(1,2000),
+                'discount' => rand(1,2000),
                 'image' => 'product-' . rand(1,5),
                 'quantity' => rand(1,50),
                 'tag' => $faker->word,

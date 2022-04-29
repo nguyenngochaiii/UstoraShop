@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/products/{product}/edit',[AdminProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}/',[AdminProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{product}/',[AdminProductController::class, 'destroy'])->name('products.destroy');
+
+    Route::get('/users/index',[AdminUserController::class, 'index'])->name('users.index');
+    Route::get('/users/create',[AdminUserController::class, 'create'])->name('users.create');
+    Route::post('/users/',[AdminUserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit',[AdminUserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}/',[AdminUserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}/',[AdminUserController::class, 'destroy'])->name('users.destroy');
 });
 
 
