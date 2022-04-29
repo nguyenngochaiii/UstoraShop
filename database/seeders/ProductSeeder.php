@@ -18,10 +18,13 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->truncate();
 
+        $user = User::
+
         $data = [];
 
         for ($i = 0; $i < 50; $i++) { 
             $data[] = [
+                'user_id' => $user,
                 'name' => $faker->name,
                 'price' => rand(1,2000),
                 'discount' => rand(1,2000),

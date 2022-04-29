@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->nullable();
             $table->float('value')->nullable();
+            $table->date('expiry_date')->nullable();
             $table->timestamps();
         });
     }

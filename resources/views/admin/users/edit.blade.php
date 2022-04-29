@@ -41,8 +41,8 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="InputPassWord">Password</label>
-                <input type="text" name="password" class="form-control" id="InputPassWord" placeholder="password"
+                <label for="InputPassword">Password</label>
+                <input type="text" name="password" class="form-control" id="InputPassword" placeholder="password"
                     value=" {{ $user->password }}">
                 @error('password')
                 <div class="text-danger">{{ $message }}</div>
@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label for="InputPhone">Phone<span class="text-danger">*</span></label>
-                <input type="text" name="phone" class="form-control" id="InputPhone" placeholder="email"
+                <input type="text" name="phone" class="form-control" id="InputPhone" placeholder="phone"
                     value="{{ $user->phone }}">
                 @error('phone')
                 <div class="text-danger">{{ $message }}</div>

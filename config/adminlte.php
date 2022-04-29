@@ -265,7 +265,7 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Manage',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
