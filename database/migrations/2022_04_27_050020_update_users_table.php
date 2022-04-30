@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -14,8 +15,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('address')->nullable();
-            $table->int('phone')->nullable();
+            $table->string('country')->nullable();
+            $table->string('streetAddress')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postCode')->nullable();
+            $table->string('phone')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('sex')->nullable();
             $table->string('username')->nullable()->after('password');
