@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('detail')->nullable();
             $table->string('tag')->nullable();
-            $table->string('rate_star')->nullable();
+            $table->float('rate_star')->nullable();
             $table->timestamps();
         });
     }

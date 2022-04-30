@@ -20,8 +20,11 @@ return new class extends Migration
             $table->bigInteger('coupon_id');
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->int('phone')->nullable();
-            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('country')->nullable();
+            $table->string('streetAddress')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postCode')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('status')->nullable();
             $table->string('note')->nullable();
