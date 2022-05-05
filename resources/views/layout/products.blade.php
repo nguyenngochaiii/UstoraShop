@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Products Page - Ustora Demo</title>
 
     <!-- Google Fonts -->
@@ -65,8 +66,8 @@
                         </div>
 
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"
-                                rel="nofollow" href="">Add to cart</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku=""
+                                data-product_id="{{ $product->id }}" rel="nofollow">Add to cart</a>
                         </div>
                     </div>
                 </div>
@@ -104,6 +105,8 @@
     <!-- Slider -->
     <script type="text/javascript" src="./themes/ustora/js/bxslider.min.js"></script>
     <script type="text/javascript" src="./themes/ustora/js/script.slider.js"></script>
+
+    <script src="{{ asset('js/order.js')}}"></script>
 </body>
 
 </html>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminController;
@@ -26,6 +27,7 @@ Route::get('/', function () {
 Route::resource('products', ProductController::class);
 Route::resource('cart', CartController::class);
 Route::resource('checkout',CheckoutController::class);
+Route::post('orders',[OrderController::class, 'store'])->name('orders.store');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('index');
@@ -43,7 +45,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/users/{user}/',[AdminUserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}/',[AdminUserController::class, 'destroy'])->name('users.destroy');
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

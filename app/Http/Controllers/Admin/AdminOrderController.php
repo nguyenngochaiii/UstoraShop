@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class AdminOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // 
+        $orders = Order::paginate(20);
+        return view('admin.orders.index')->with(compact('orders'));
     }
 
     /**
@@ -34,11 +36,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $productId = $request->product_id;
-
-        return json_encode([
-            
-        ]);
+        //
     }
 
     /**
