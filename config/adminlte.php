@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Admin Dashboard',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -50,7 +50,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -293,6 +293,20 @@ return [
                         [
                             'text' => 'Create',
                             'url'  => 'admin/users/create',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Order',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'List',
+                            'url'  => 'admin/orders/index',
+                        ],
+                        [
+                            'text' => 'Create',
+                            'url'  => 'admin/orders/create',
                         ],
                     ],
                 ],

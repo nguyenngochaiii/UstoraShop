@@ -9,7 +9,8 @@
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <a href="cart">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i>
+                    <a href="{{route('orders.index')}}">Cart - <span class="cart-amunt">0</span> <i
+                            class="fa fa-shopping-cart"></i>
                         <span class="product-count">0</span></a>
                 </div>
             </div>

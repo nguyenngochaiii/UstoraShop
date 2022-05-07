@@ -3,7 +3,7 @@
 @section('title', 'Admin | Order list')
 
 @section('content_header')
-<h1>Product list</h1>
+<h1>Order list</h1>
 @if (session('status'))
 <div class="alert alert-success">
     {{session('status')}}
@@ -24,7 +24,6 @@
                 <tr>
                     <th style="width: 10px">STT</th>
                     <th>User</th>
-                    <th>Product</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -36,13 +35,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach( $products as $product)
+                @foreach( $orders as $order)
                 <tr>
-                    <td>{{$loop->iteration + ($products->currentPage() -  1) * 20}}.</td>
-                    <td>{{$product->user->id}}</td>
-                    <td>${{$product->price}}</td>
-                    <td>{{$product->quantity}}</td>
-                    <td>{{$product->user->name}}</td>
+                    <td>{{$loop->iteration + ($orders->currentPage() -  1) * 20}}.</td>
+                    <td>{{ isset($order->user) ? $order->user->name : ''}}</td>
+                    <td>{{$order->name}}</td>
+                    <td>{{$order->email}}</td>
+                    <td>{{$order->phone}}</td>
+                    <td>{{$order->address}}</td>
+                    <td>{{$order->quantity}}</td>
+                    <td>{{$order->status}}</td>
+                    <td>{{$order->note}}</td>
+                    <td>{{$order->total_fee}}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -51,7 +55,7 @@
 
     <div class="card-footer clearfix">
         <ul class="pagination pagination-sm m-0 float-right">
-            {{ $products->links('vendor.pagination.bootstrap-4')}}
+            {{ $orders->links('vendor.pagination.bootstrap-4')}}
         </ul>
     </div>
 </div>

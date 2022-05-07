@@ -13,20 +13,16 @@ $(function () {
         currentCartNumber++;
         $('.product-count').text(currentCartNumber).show();
 
-        var url = '/orders';
-        var data = {
-            'product_id': productID,
-        };
-
+        var url = "/orders";
         $.ajax({
             url: url,
-            data: data,
-            type: 'POST',
+            data: {
+                'product_id': productID,
+            },
+            type: 'post',
             success: function (result) {
-                console.log('ajax suc');
             },
             error: function () {
-                console.log('ajax err');
             }
         });
     });

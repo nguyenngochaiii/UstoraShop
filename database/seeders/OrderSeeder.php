@@ -6,7 +6,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\User;
-use App\Models\Product;
 use App\Models\Coupon;
 use DB;
 
@@ -22,7 +21,6 @@ class OrderSeeder extends Seeder
         DB::table('orders')->truncate();
 
         $users = User::all()->pluck('id');
-        $products = Product::all()->pluck('id');
         $coupons = Coupon::all()->pluck('id');
 
         $data = [];
@@ -30,7 +28,6 @@ class OrderSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) { 
             $data[] = [
                 'user_id' => $users->random(),
-                'product_id' => $products->random(),
                 'coupon_id' => $coupons->random(),
                 'name' => $faker->name,
                 'email' => $faker->email,

@@ -25027,20 +25027,15 @@ $(function () {
     var currentCartNumber = parseInt($('.product-count').text());
     currentCartNumber++;
     $('.product-count').text(currentCartNumber).show();
-    var url = '/orders';
-    var data = {
-      'product_id': productID
-    };
+    var url = "/orders";
     $.ajax({
       url: url,
-      data: data,
-      type: 'POST',
-      success: function success(result) {
-        console.log('ajax suc');
+      data: {
+        'product_id': productID
       },
-      error: function error() {
-        console.log('ajax err');
-      }
+      type: 'post',
+      success: function success(result) {},
+      error: function error() {}
     });
   });
 });

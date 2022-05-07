@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\Admin\OrderAdminService;
 
 class AdminOrderController extends Controller
 {
+
+    protected $OrderAdminService;
+
+    public function __construct(OrderAdminService $service)
+    {
+        $this->orderAdminService = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class AdminOrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::paginate(20);
+        $orders = $this->orderAdminService->getOrders();
         return view('admin.orders.index')->with(compact('orders'));
     }
 
@@ -47,7 +55,7 @@ class AdminOrderController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
