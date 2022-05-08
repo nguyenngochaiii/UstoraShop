@@ -80,7 +80,7 @@ class OrderController extends Controller
         ->where('status', $new)
         ->first();
 
-        if(!$order){
+        if($order){
             $total_fee = $order->total_fee + $product->price;
         }else {
             $total_fee = $product->price;
@@ -95,21 +95,26 @@ class OrderController extends Controller
                     'coupon_id' => 1,
                     'total_fee' =>$total_fee,
                     'status' => $new,
+                    'quantity' => 1,
                 ];
 
                 $order = Order::create($orderData);
                 $isCreateProductOrder = true;
-           } //else {
-        //         $productOrder = ProductOrder::where('order_id', $order->id)
-        //         ->where('product_id', $product->id)
-        //         ->first();
+           } else {
+                $productOrder = ProductOrder::where('order_id', $order->id)
+                ->where('product_id', $product->id)
+                ->first();
                 
-        //         if(!$productOrder){
-        //             $productOrder->increment('quantity');
-        //         }else {
-        //             $isCreateProductOrder = true;
-        //         }
-        //    }
+                if($productOrder){
+                    $productOrder->increment('quantity');
+                }else {
+                    $isCreateProductOrder = true;
+                }
+
+                $order->update([
+                    'total_fee' => $total_fee,
+                ]);
+           }
            if($isCreateProductOrder){
                 $orderProductData = [
                     'product_id' => $productId,

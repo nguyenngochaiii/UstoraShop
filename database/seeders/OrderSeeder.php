@@ -38,6 +38,7 @@ class OrderSeeder extends Seeder
                 'city' => $faker->city,
                 'quantity' => rand(1,30),
                 'note' => $faker->text($maxNbChars = 40),
+                'status' => rand(1,6),
                 'total_fee' => rand(5000,10000),
             ];
         }

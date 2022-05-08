@@ -44,9 +44,9 @@
                     <td>{{$order->phone}}</td>
                     <td>{{$order->address}}</td>
                     <td>{{$order->quantity}}</td>
-                    <td>{{$order->status}}</td>
+                    <td>{{$status[$order->status]}}</td>
                     <td>{{$order->note}}</td>
-                    <td>{{$order->total_fee}}</td>
+                    <td>${{$order->total_fee}}</td>
                 </tr>
                 @endforeach
             </tbody>

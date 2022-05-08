@@ -23,7 +23,9 @@ class AdminOrderController extends Controller
     public function index()
     {
         $orders = $this->orderAdminService->getOrders();
-        return view('admin.orders.index')->with(compact('orders'));
+        return view('admin.orders.index' , [
+            'status' => array_flip(config('order.status')),
+        ])->with(compact('orders'));
     }
 
     /**
