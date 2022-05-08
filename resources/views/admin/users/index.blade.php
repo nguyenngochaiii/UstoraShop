@@ -35,7 +35,7 @@
                     <td>{{$loop->iteration + ($users->currentPage() -  1) * 20}}.</td>
                     <td>{{$user->name}}</td>
                     <td>${{$user->email}}</td>
-                    <td>{{$user->address}}</td>
+                    <td>{{$user->streetAddress}}, {{$user->city}}, {{$user->country}}</td>
                     <td>{{$user->phone}}</td>
                     <td style="width:30px">
                         <button class="btn btn-danger btn-delete"

@@ -18,3 +18,4 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 ]);
 
 mix.copyDirectory('resources/themes', 'public/themes');
+mix.js('resources/js/order.js', 'public/js');

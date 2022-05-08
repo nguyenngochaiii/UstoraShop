@@ -81,8 +81,8 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="InputDOB">Date of Birth</label>
-                <input type="text" name="dob" class="form-control" id="InputDOB" placeholder="dob"
+                <label for="Input_date_of_birth">Date of Birth</label>
+                <input type="text" name="dob" class="form-control" id="Input_date_of_birth" placeholder="dob"
                     value=" {{ $user->date_of_birth }}">
                 @error('dob')
                 <div class="text-danger">{{ $message }}</div>

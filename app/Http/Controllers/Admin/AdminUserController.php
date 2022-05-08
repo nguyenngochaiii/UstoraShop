@@ -4,11 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\Admin\UserService;
 use App\Models\User;
 use DB;
 
+
 class AdminUserController extends Controller
 {
+    
+    protected $userService;
+
+    public function __construct(UserService $service)
+    {
+        $this->userService = $service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +25,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(20);
+        $users = $this->userService->getUsers();
         return view('admin.users.index')->with(compact('users'));
     }
 
@@ -82,7 +91,7 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->userService->showUser($id);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -103,7 +112,10 @@ class AdminUserController extends Controller
             'password',
             'phone',
             'email',
-            'address',
+            'country',
+            'streetAddress',
+            'city',
+            'postCode',
             'sex',
             'date_of_birth',
         ]);

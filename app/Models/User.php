@@ -23,7 +23,10 @@ class User extends Authenticatable
         'username',
         'password',
         'date_of_birth',
-        'address',
+        'country',
+        'streetAddress',
+        'city',
+        'postCode',
         'sex',
         'avatar',
     ];
@@ -59,7 +62,7 @@ class User extends Authenticatable
 
     public function products()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Product::class);
     }
 
     public function reviews()

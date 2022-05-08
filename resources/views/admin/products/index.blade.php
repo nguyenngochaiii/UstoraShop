@@ -26,6 +26,7 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Created By</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -36,6 +37,7 @@
                     <td>{{$product->name}}</td>
                     <td>${{$product->price}}</td>
                     <td>{{$product->quantity}}</td>
+                    <td>{{$product->user->name}}</td>
                     <td style="width:30px">
                         <button class="btn btn-danger btn-delete"
                             data-link="{{ route('admin.products.destroy' , $product->id) }}">Delete</button>

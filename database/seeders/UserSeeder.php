@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 
         $data = [];
 
-        for ($i = 0; $i < 10; $i++) { 
+        for ($i = 0; $i < 50; $i++) { 
             $data[] = [
                 'name' => $faker->name,
                 'email' => $faker->email,
