@@ -5,6 +5,7 @@ namespace App\Services;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\ProductOrder;
 
 class OrderService extends BaseService
 {
@@ -14,10 +15,17 @@ class OrderService extends BaseService
         $this->orderModel = $order;
     }
 
-
-    public function showOrder()
+    public function showProductCart($user)
     {
-        $orders = $this->orderModel::paginate(20);
+        $order = $user->orders()->where('status', config('order.status.new'))
+        ->first();
+
+        $products = $order ? $order->products : [];
+
+        $quantityArr = ProductOrder::where('order_id',$order->id)
+        ->pluck('quantity', 'product_id')
+        ->toArray();
+
+        return $products;
     }
-    
 }
