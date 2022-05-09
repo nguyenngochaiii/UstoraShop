@@ -217,7 +217,7 @@
                                         <tbody>
                                             <tr class="cart-subtotal">
                                                 <th>Cart Subtotal</th>
-                                                <td><span class="amount">£15.00</span></td>
+                                                <td><span class="amount">${{ $total_fee[0] }}</span></td>
                                             </tr>
 
                                             <tr class="shipping">
@@ -227,7 +227,8 @@
 
                                             <tr class="order-total">
                                                 <th>Order Total</th>
-                                                <td><strong><span class="amount">£15.00</span></strong> </td>
+                                                <td><strong><span class="amount">${{ $total_fee[0] }}</span></strong>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

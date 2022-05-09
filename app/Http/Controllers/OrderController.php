@@ -34,10 +34,12 @@ class OrderController extends Controller
         $currentUser = auth()->user();
         
         $array = $this->orderService->showProductCart($currentUser);
-        
+
+        // dd($array[2]);
         return view('layout.cart', [
             'products' => $array[0],
             'quantityArr' => $array[1],
+            'total_fee' => $array[2],
         ]);
     }
 
