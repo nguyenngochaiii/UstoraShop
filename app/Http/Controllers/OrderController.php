@@ -35,12 +35,7 @@ class OrderController extends Controller
         
         $array = $this->orderService->showProductCart($currentUser);
 
-        // dd($array[2]);
-        return view('layout.cart', [
-            'products' => $array[0],
-            'quantityArr' => $array[1],
-            'total_fee' => $array[2],
-        ]);
+        return view('layout.cart', $array);
     }
 
     /**
@@ -178,8 +173,28 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($productId)
     {
-        //
+
+        $currentUser = auth()->user();
+        $orderNew = $currentUser->orders()->where('status' , config('order.status.new'))->first();
+
+        $product = $orderNew->products()->where('product_id', $productId)->first();
+
+        $total_fee = $orderNew->total_fee - $product->price * $product->pivot->quantity;
+
+        $orderNew->update([
+            'total_fee' =>  $total_fee,
+        ]);
+
+        try {
+            $product->delete();
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return back();
+        }
+
+        return back();
     }
 }

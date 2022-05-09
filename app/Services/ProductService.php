@@ -17,6 +17,8 @@ class ProductService extends BaseService
     public function getProducts()
     {
         $products = $this->productModel::where('quantity','!=',0)->paginate(12);
+
+        
         
         return $products;
     }

@@ -28,15 +28,14 @@ class OrderService extends BaseService
         ->pluck('quantity', 'product_id')
         ->toArray();
 
-        $totalPrice = Order::where('id',$order->id)
-        ->pluck('total_fee')
-        ->toArray();
+        $totalPrice = $order->total_fee;
         
-        $array = [
-            $products , 
-            $quantityArr,
-            $totalPrice,
-        ]; 
-        return $array;
+        $countProducts = count($products);
+
+        return compact('products', 
+            'quantityArr',
+            'totalPrice',
+            'countProducts'
+        );
     }
 }

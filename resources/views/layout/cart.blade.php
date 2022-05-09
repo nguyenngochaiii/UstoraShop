@@ -29,7 +29,25 @@
 
     @include('partials.header')
 
-    @include('partials.branding-area')
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="./"><img src="/themes/ustora/img/logo.png"></a></h1>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <a href="{{route('orders.index')}}">Cart - <span class="cart-amunt">${{ $totalPrice }}</span>
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="product-count">{{ $countProducts }}</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
 
     @include('partials.mainmenu-area')
 
@@ -106,71 +124,75 @@
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="post" action="#">
-                                <table cellspacing="0" class="shop_table cart">
-                                    <thead>
-                                        <tr>
-                                            <th class="product-remove">&nbsp;</th>
-                                            <th class="product-thumbnail">&nbsp;</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($products as $product)
-                                        <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="#">×</a>
-                                            </td>
+                            <table cellspacing="0" class="shop_table cart">
+                                <thead>
+                                    <tr>
+                                        <th class="product-remove">&nbsp;</th>
+                                        <th class="product-thumbnail">&nbsp;</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($products as $product)
+                                    <tr class="cart_item">
+                                        <td class="product-remove">
+                                            <button title="Remove this item" class="remove btn-delete"
+                                                data-link="{{ route('orders.destroy' , $product->id) }}">×</button>
+                                        </td>
 
-                                            <td class="product-thumbnail">
-                                                <a href="single-product.html"><img width="145" height="145"
-                                                        alt="poster_1_up" class="shop_thumbnail"
-                                                        src="./themes/ustora/img/product-thumb-2.jpg"></a>
-                                            </td>
+                                        <td class="product-thumbnail">
+                                            <a href="single-product.html"><img width="145" height="145"
+                                                    alt="poster_1_up" class="shop_thumbnail"
+                                                    src="./themes/ustora/img/{{$product->image}}.jpg"></a>
+                                        </td>
 
-                                            <td class="product-name">
-                                                <a href="single-product.html">{{$product->name}}</a>
-                                            </td>
+                                        <td class="product-name">
+                                            <a href="single-product.html">{{$product->name}}</a>
+                                        </td>
 
-                                            <td class="product-price">
-                                                <span class="amount">${{$product->price }}</span>
-                                            </td>
+                                        <td class="product-price">
+                                            <span class="amount">${{$product->price }}</span>
+                                        </td>
 
-                                            <td class="product-quantity">
-                                                <div class="quantity buttons_added">
-                                                    <input type="button" class="minus" value="-">
-                                                    <input type="number" size="4" class="input-text qty text"
-                                                        title="Qty" value="{{ $quantityArr[$product->id]}}" min="0"
-                                                        step="1">
-                                                    <input type="button" class="plus" value="+">
-                                                </div>
-                                            </td>
+                                        <td class="product-quantity">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" class="minus" value="-">
+                                                <input type="number" size="4" class="input-text qty text" title="Qty"
+                                                    value="{{ $quantityArr[$product->id]}}" min="0" step="1">
+                                                <input type="button" class="plus" value="+">
+                                            </div>
+                                        </td>
 
-                                            <td class="product-subtotal">
-                                                <span class="amount"></span>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                        <tr>
-                                            <td class="actions" colspan="6">
-                                                <div class="coupon">
-                                                    <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" placeholder="Coupon code" value=""
-                                                        id="coupon_code" class="input-text" name="coupon_code">
-                                                    <input type="submit" value="Apply Coupon" name="apply_coupon"
-                                                        class="button">
-                                                </div>
-                                                <input type="submit" value="Update Cart" name="update_cart"
+                                        <td class="product-subtotal">
+                                            <span class="amount"></span>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td class="actions" colspan="6">
+                                            <div class="coupon">
+                                                <label for="coupon_code">Coupon:</label>
+                                                <input type="text" placeholder="Coupon code" value="" id="coupon_code"
+                                                    class="input-text" name="coupon_code">
+                                                <input type="submit" value="Apply Coupon" name="apply_coupon"
                                                     class="button">
-                                                <input type="submit" value="Checkout" name="proceed"
-                                                    class="checkout-button button alt wc-forward">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </div>
+                                            <input type="submit" value="Update Cart" name="update_cart" class="button">
+                                            <input type="submit" value="Checkout" name="proceed"
+                                                class="checkout-button button alt wc-forward">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <form id="form-delete" style="display: none;"
+                                action="{{ route('orders.destroy' , $product->id) }}" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-destroy">Delete</button>
                             </form>
 
                             <div class="cart-collaterals">
@@ -217,7 +239,7 @@
                                         <tbody>
                                             <tr class="cart-subtotal">
                                                 <th>Cart Subtotal</th>
-                                                <td><span class="amount">${{ $total_fee[0] }}</span></td>
+                                                <td><span class="amount">${{ $totalPrice }}</span></td>
                                             </tr>
 
                                             <tr class="shipping">
@@ -227,7 +249,7 @@
 
                                             <tr class="order-total">
                                                 <th>Order Total</th>
-                                                <td><strong><span class="amount">${{ $total_fee[0] }}</span></strong>
+                                                <td><strong><span class="amount">${{ $totalPrice }}</span></strong>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -517,8 +539,6 @@
         </div>
     </div>
 
-    @include('partials.footer')
-
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
 
@@ -534,6 +554,24 @@
 
     <!-- Main Script -->
     <script src="./themes/ustora/js/main.js"></script>
+
+    <script>
+    $(function() {
+        $('.btn-delete').click(function() {
+            var urlDelete = $(this).data('link');
+            var nameProduct = $(this).parent().parent().find('.product-name').find('a').text();
+
+            console.log(urlDelete);
+
+            $('#form-delete').attr('action', urlDelete);
+
+            if (confirm('Are you sure delete ' + nameProduct +
+                    '?')) {
+                $('.btn-destroy').click();
+            }
+        })
+    });
+    </script>
 
     <!-- Slider -->
     <script type="text/javascript" src="./themes/ustora/js/bxslider.min.js"></script>

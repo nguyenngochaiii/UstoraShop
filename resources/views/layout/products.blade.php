@@ -65,10 +65,10 @@
                             <ins>$ {{ $product->price }} </ins> <del>$999.00</del>
                         </div>
 
-                        <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku=""
-                                data-product_id="{{ $product->id }}" rel="nofollow">Add to cart</a>
-                        </div>
+                        <a class="product-option-shop">
+                            <button class="add_to_cart_button" data-quantity="1" data-product_sku=""
+                                data-product_id="{{ $product->id }}" rel="nofollow">Add to cart</button>
+                        </a>
                     </div>
                 </div>
                 @endforeach
