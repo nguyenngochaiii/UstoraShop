@@ -17,6 +17,8 @@ class OrderService extends BaseService
 
     public function showProductCart($user)
     {
+        
+
         $order = $user->orders()->where('status', config('order.status.new'))
         ->first();
 
@@ -26,6 +28,10 @@ class OrderService extends BaseService
         ->pluck('quantity', 'product_id')
         ->toArray();
 
-        return $products;
+        $array = [
+            $products , 
+            $quantityArr,
+        ]; 
+        return $array;
     }
 }

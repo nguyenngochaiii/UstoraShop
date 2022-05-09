@@ -143,13 +143,14 @@
                                                 <div class="quantity buttons_added">
                                                     <input type="button" class="minus" value="-">
                                                     <input type="number" size="4" class="input-text qty text"
-                                                        title="Qty" value="{{ $product->quantity}}" min="0" step="1">
+                                                        title="Qty" value="{{ $quantityArr[$product->id]}}" min="0"
+                                                        step="1">
                                                     <input type="button" class="plus" value="+">
                                                 </div>
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">${{ $quantityArr}}</span>
+                                                <span class="amount"></span>
                                             </td>
                                         </tr>
                                         @endforeach

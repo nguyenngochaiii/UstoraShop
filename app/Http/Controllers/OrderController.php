@@ -27,17 +27,18 @@ class OrderController extends Controller
      */
     public function index()
     {
-
         if (!auth()->check()) {
             return redirect('login');
         }
 
         $currentUser = auth()->user();
         
-        $products = $this->orderService->showProductCart($currentUser);
+        $array = $this->orderService->showProductCart($currentUser);
         
-        return view('layout.cart')->with(compact('products'))
-        ->with(compact('quantityArr'));
+        return view('layout.cart', [
+            'products' => $array[0],
+            'quantityArr' => $array[1],
+        ]);
     }
 
     /**
