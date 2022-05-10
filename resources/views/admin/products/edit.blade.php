@@ -48,6 +48,22 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="InputDiscount">Discount</label>
+                <input type="text" name="discount" class="form-control" id="InputDiscount" placeholder="Discount"
+                    value=" {{ $product->discount }}">
+                @error('discount')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputTag">Tag</label>
+                <input type="text" name="tag" class="form-control" id="InputTag" placeholder="tag"
+                    value=" {{ $product->tag }}">
+                @error('tag')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Update</button>
