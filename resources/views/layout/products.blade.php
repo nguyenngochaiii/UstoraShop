@@ -94,9 +94,9 @@
         <div class="col-md-3 col-sm-6 zigzag-bottom">
             <div class="single-sidebar">
                 <h2 class="sidebar-title">Search Products</h2>
-                <form action="#">
-                    <input type="text" placeholder="Search products...">
-                    <input type="submit" value="Search">
+                <form action="{{route('products.index')}}" id="search">
+                    <input type="text" name="search" placeholder="Search products...">
+                    <input type="submit" value="search">
                 </form>
             </div>
         </div>

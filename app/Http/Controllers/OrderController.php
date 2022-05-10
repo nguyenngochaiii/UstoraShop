@@ -10,15 +10,18 @@ use App\Models\ProductOrder;
 use Exception;
 use Log;
 use App\Services\OrderService;
+use App\Services\ProductService;
 
 class OrderController extends Controller
 {
 
     protected $orderService;
+    protected $productService;
 
-    public function __construct(OrderService $service)
+    public function __construct(OrderService $orderService,ProductService $productService)
     {
-        $this->orderService = $service;
+        $this->orderService = $orderService;
+        $this->productService = $productService;
     }
     /**
      * Display a listing of the resource.

@@ -14,9 +14,14 @@ class ProductService extends BaseService
         $this->productModel = $product;
     }
 
-    public function getProducts()
+    public function getProducts($searchKey)
     {
-        $products = $this->productModel::paginate(12);
+        $products = $this->productModel::where('quantity', '!=' , 0)->paginate(12);
+        
+        if ($searchKey) {
+            $products = $this->productModel::where('name','like','%' . $searchKey . '%')
+            ->paginate(12);
+        }
         
         return $products;
     }

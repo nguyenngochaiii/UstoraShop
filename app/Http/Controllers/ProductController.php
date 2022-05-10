@@ -24,14 +24,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $currentUser = auth()->user();
-        $products = $this->productService->getProducts();
-        
+        $products = $this->productService->getProducts($request->search);
         $array = $this->orderService->showProductCart($currentUser);
 
-        return view('layout.products', $array )->with(compact('products'));
+        return view('layout.products',$array)->with(compact('products'));
     }
     
     public function show($id)
