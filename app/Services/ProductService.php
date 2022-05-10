@@ -21,7 +21,7 @@ class ProductService extends BaseService
         return $products;
     }
 
-    public function showProduct()
+    public function showProduct($id)
     {
         $product = $this->productModel::findOrFail($id);
         

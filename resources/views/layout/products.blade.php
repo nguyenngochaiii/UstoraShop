@@ -30,9 +30,52 @@
 
     @include('partials.header')
 
-    @include('partials.branding-area')
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="./"><img src="/themes/ustora/img/logo.png"></a></h1>
+                    </div>
+                </div>
 
-    @include('partials.mainmenu-area')
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <a href="{{route('orders.index')}}">Cart - <span class="cart-amunt">${{ $totalPrice }}</span>
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="product-count">{{ $countProducts }}</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
+
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li class="active"><a href="products">Shop page</a></li>
+                        <li><a href="product">Product</a></li>
+                        <li><a href="cart">Cart</a></li>
+                        <li><a href="checkout">Checkout</a></li>
+                        <li><a href="category">Category</a></li>
+                        <li><a href="others">Others</a></li>
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
 
     <div class="product-big-title-area">
         <div class="container">
@@ -48,7 +91,15 @@
 
 
     <div class="single-product-area">
-        <div class="zigzag-bottom"></div>
+        <div class="col-md-3 col-sm-6 zigzag-bottom">
+            <div class="single-sidebar">
+                <h2 class="sidebar-title">Search Products</h2>
+                <form action="#">
+                    <input type="text" placeholder="Search products...">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
         <div class="container">
             <div class="row" style=" display: flex; flex-wrap: wrap;">
                 @foreach ($products as $product)
@@ -62,7 +113,7 @@
                         </div>
                         <h2><a href="{{ route('products.show', $product->id)}}">{{ $product->name }}</a></h2>
                         <div class="product-carousel-price">
-                            <ins>$ {{ $product->price }} </ins> <del>$999.00</del>
+                            <ins>$ {{ $product->price }} </ins> <del>$ {{ $product->discount}}</del>
                         </div>
 
                         <a class="product-option-shop">

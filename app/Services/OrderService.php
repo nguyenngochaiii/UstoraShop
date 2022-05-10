@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\ProductOrder;
 use App\Models\Product;
 
+
 class OrderService extends BaseService
 {
     protected $orderModel;
@@ -40,7 +41,7 @@ class OrderService extends BaseService
         ->toArray();
 
         $totalPrice = $order->total_fee;
-        
+   
         $countProducts = count($products);
 
         return compact('products', 
@@ -52,22 +53,7 @@ class OrderService extends BaseService
 
     public function addProductToCart($productId)
     {
-
-        $product =  $this->productModel::find($request->product_id);
-
-        if(!$product){
-            return [
-                'status' => false,
-                'msg' => 'product dont exist',
-            ];
-        }
-
-        if (!auth()->check()) {
-            return [
-                'status' => false,
-                'msg' => 'Need Login',
-            ];
-        }
+        $product = $this->productModel::find($productId);
 
         $currentUserId = auth()->id();
         $new = config('order.status.new');
