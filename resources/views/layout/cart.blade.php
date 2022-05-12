@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cart</title>
 
     <!-- Google Fonts -->
@@ -146,25 +147,28 @@
                                         </td>
 
                                         <td class="product-price">
-                                            <span class="amount">${{$product->price }}</span>
+                                            <span class="amount amount-price">${{$product->price }}</span>
                                         </td>
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons_added">
-                                                <input type="button" class="minus" value="-">
+                                                <input type="button" class="minus" value="-"
+                                                    data-productId="{{ $product->id }}">
                                                 <input type="number" size="4" class="input-text qty text" title="Qty"
-                                                    value="{{ $quantityArr[$product->id]}}" min="0" step="1">
-                                                <input type="button" class="plus" value="+">
+                                                    value="{{ $quantityArr[$product->id]}}" min="0" max="99" step="1">
+                                                <input type="button" class="plus" value="+"
+                                                    data-productId="{{ $product->id }}">
                                             </div>
                                         </td>
 
                                         <td class="product-subtotal">
-                                            <span class="amount"></span>
+                                            <span
+                                                class="amount amount-subtotal">${{$product->price * $product->pivot->quantity}}</span>
                                         </td>
                                     </tr>
                                     @endforeach
                                     <tr>
-                                        <td class="actions" colspan="6">
+                                        <td class=" actions" colspan="6">
                                             <div class="coupon">
                                                 <label for="coupon_code">Coupon:</label>
                                                 <input type="text" placeholder="Coupon code" value="" id="coupon_code"
@@ -231,7 +235,7 @@
                                         <tbody>
                                             <tr class="cart-subtotal">
                                                 <th>Cart Subtotal</th>
-                                                <td><span class="amount">${{ $totalPrice }}</span></td>
+                                                <td><span class="amount amount-total">${{ $totalPrice }}</span></td>
                                             </tr>
 
                                             <tr class="shipping">
@@ -249,7 +253,7 @@
                                 </div>
 
 
-                                <form method="post" action="#" class="shipping_calculator">
+                                <!-- <form method="post" action="#" class="shipping_calculator">
                                     <h2><a class="shipping-calculator-button" data-toggle="collapse"
                                             href="#calcalute-shipping-wrap" aria-expanded="false"
                                             aria-controls="calcalute-shipping-wrap">Calculate Shipping</a></h2>
@@ -520,7 +524,7 @@
                                                 Totals</button></p>
 
                                     </section>
-                                </form>
+                                </form> -->
 
 
                             </div>
@@ -549,6 +553,12 @@
 
     <script>
     $(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $('.btn-delete').click(function() {
             var urlDelete = $(this).data('link');
             var nameProduct = $(this).parent().parent().find('.product-name').find('a').text();
@@ -560,8 +570,55 @@
             if (confirm('Are you sure delete ' + nameProduct +
                     '?')) {
                 $('.btn-destroy').click();
+
             }
-        })
+        });
+
+        function showPrice(quantityElement) {
+            var priceProduct = quantityElement.closest("tr").find('.amount-price').text().replace('$', '');
+            priceProduct = parseInt(priceProduct);
+
+            var productCount = quantityElement.closest("td").find(".qty").val();
+            quantityElement.closest("tr").find('.amount-subtotal').text('$' + priceProduct * productCount);
+
+            var productId = quantityElement.attr('data-productId');
+
+            var totalPrice = 0;
+            $('.amount-subtotal').each(function() {
+                totalPrice += parseInt($(this).text().replace('$', ''));
+            });
+
+            $('.amount-total').text('$' + totalPrice);
+
+            $.ajax({
+                url: "/orders/update",
+                data: {
+                    'product_id': productId,
+                    'quantity': productCount,
+                },
+                type: 'put',
+                success: function(result) {},
+                error: function() {}
+            });
+        }
+
+        $('.plus').click(function() {
+            if ($(this).prev().val() < 99) {
+                $(this).prev().val(+$(this).prev().val() + 1);
+            }
+
+            showPrice($(this));
+        });
+
+        $('.minus').click(function() {
+            if ($(this).next().val() > 1) {
+                if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+            }
+
+            showPrice($(this));
+        });
+
+
     });
     </script>
 

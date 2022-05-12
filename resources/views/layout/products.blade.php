@@ -41,9 +41,9 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="{{route('orders.index')}}">Cart - <span class="cart-amunt">${{ $totalPrice }}</span>
+                        <a href="{{route('orders.index')}}">Cart
                             <i class="fa fa-shopping-cart"></i>
-                            <span class="product-count">{{ $countProducts }}</span></a>
+                            <span class="product-count">0</span></a>
                     </div>
                 </div>
             </div>

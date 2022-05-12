@@ -30,6 +30,7 @@ Route::resource('cart', CartController::class);
 Route::resource('checkout',CheckoutController::class);
 Route::get('/my-cart',[OrderController::class, 'index'])->name('orders.index');
 Route::post('/orders',[OrderController::class, 'store'])->name('orders.store');
+Route::put('/orders/update',[OrderController::class, 'update'])->name('orders.update');
 Route::delete('/orders/{order}/',[OrderController::class, 'destroy'])->name('orders.destroy');
 
 Route::prefix('admin')->name('admin.')->group(function () {

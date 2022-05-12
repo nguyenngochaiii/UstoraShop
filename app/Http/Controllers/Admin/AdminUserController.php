@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Admin\UserService;
+use App\Services\UserService;
 use App\Models\User;
 use DB;
 

@@ -25,7 +25,7 @@ class AdminProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->productService->getProducts();
+        $products = $this->productService->getProducts($request->search);
         return view('admin.products.index')->with(compact('products'));
     }
 

@@ -28,9 +28,9 @@ class ProductController extends Controller
     {
         $currentUser = auth()->user();
         $products = $this->productService->getProducts($request->search);
-        $array = $this->orderService->showProductCart($currentUser);
+        // $array = $this->orderService->showProductCart($currentUser);
 
-        return view('layout.products',$array)->with(compact('products'));
+        return view('layout.products')->with(compact('products'));
     }
     
     public function show($id)

@@ -41,8 +41,9 @@ class OrderService extends BaseService
         ->toArray();
 
         $totalPrice = $order->total_fee;
-   
+     
         $countProducts = count($products);
+
 
         return compact('products', 
             'quantityArr',
@@ -126,22 +127,48 @@ class OrderService extends BaseService
         $currentUser = auth()->user();
         $orderNew = $currentUser->orders()->where('status' , config('order.status.new'))->first();
 
-        $product = $orderNew->products()->where('product_id', $productId)->first();
+        $productOrder = $this->productOrderModel::where('product_id',$productId)->first();
 
-        $total_fee = $orderNew->total_fee - $product->price * $product->pivot->quantity;
+        $total_fee = $orderNew->total_fee - $productOrder->price * $productOrder->quantity;
 
         $orderNew->update([
             'total_fee' =>  $total_fee,
         ]);
 
         try {
-            $product->delete();
+            $productOrder->delete();
         } catch (\Exception $e) {
             \Log::error($e);
             
             return false;
         }
         
+        return true;
+    }
+
+
+    public function changeQuantityProduct($productId, $quantity)
+    {
+        $productOrder = $this->productOrderModel::where('product_id',$productId)->first();
+        $currentUser = auth()->user();
+        $orderNew = $currentUser->orders()->where('status' , config('order.status.new'))->first();
+
+        $total_fee = $orderNew->total_fee + $productOrder->price * $productOrder->quantity;
+
+        try {
+            $productOrder->update([
+                'quantity' => $quantity,
+            ]);
+
+            $orderNew->update([
+                'total_fee' => $total_fee,
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return false;
+        }
         return true;
     }
 }
