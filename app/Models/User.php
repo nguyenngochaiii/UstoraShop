@@ -29,6 +29,7 @@ class User extends Authenticatable
         'postCode',
         'sex',
         'avatar',
+        'role_as',
     ];
 
     /**

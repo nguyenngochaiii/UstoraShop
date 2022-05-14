@@ -33,6 +33,7 @@ class UserSeeder extends Seeder
                 'city' => $faker->city,
                 'date_of_birth' => $faker->datetime,
                 'sex' => $faker->title($gender = 'male'|'female'),
+                'role_as' => 0,
                 'avatar' => $faker->imageUrl($width = 640, $height = 480),
             ];
         }

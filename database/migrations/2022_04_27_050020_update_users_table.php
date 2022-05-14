@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('sex')->nullable();
             $table->string('username')->nullable()->after('password');
             $table->string('avatar')->nullable();
+            $table->string('role_as')->default(0);
             $table->timestamps();
         });
     }
