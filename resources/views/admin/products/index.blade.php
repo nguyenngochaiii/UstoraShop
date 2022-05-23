@@ -23,7 +23,7 @@
             <div class="card-header">
                 <div class="card-tools">
                     <form action="{{route('admin.products.index')}}" class="input-group input-group-sm"
-                        style="width: 150px;">
+                        style="width: 300px;">
                         <input type="text" name="search" class="form-control float-right" placeholder="Search">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
@@ -32,6 +32,11 @@
                         </div>
                     </form>
                 </div>
+                <a href="{{route('admin.products.create')}}">
+                    <button class="btn btn-primary btn-create ">
+                        Create
+                    </button>
+                </a>
             </div>
 
             <div class="card-body table-responsive p-0">
@@ -44,7 +49,7 @@
                             <th>Quantity</th>
                             <th>Discount</th>
                             <th>Tag</th>
-                            <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,6 +64,9 @@
                             <td style="width:30px">
                                 <button class="btn btn-danger btn-delete"
                                     data-link="{{ route('admin.products.destroy' , $product->id) }}">Delete</button>
+                                <a href="{{ route('admin.products.edit' , $product->id) }}">
+                                    <button class="btn btn-primary btn-edit">Edit</button>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -88,18 +96,16 @@
 @section('js')
 <script>
 $(function() {
-    $('.btn-delete').click(
-        function() {
-            var urlDelete = $(this).data('link');
-            console.log(urlDelete);
+    $('.btn-delete').click(function() {
+        var urlDelete = $(this).data('link');
+        console.log(urlDelete);
 
-            $('#form-delete').attr('action', urlDelete);
+        $('#form-delete').attr('action', urlDelete);
 
-            if (confirm('Are you sure delete {{ $product->name}} ?')) {
-                $('.btn-destroy').click();
-            }
+        if (confirm('Are you sure delete {{ $product->name}} ?')) {
+            $('.btn-destroy').click();
         }
-    )
+    });
 });
 </script>
 @stop
