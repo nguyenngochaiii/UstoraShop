@@ -10,15 +10,18 @@ use App\Models\ProductOrder;
 use Exception;
 use Log;
 use App\Services\OrderService;
+use App\Services\ProductService;
 
 class OrderController extends Controller
 {
 
     protected $orderService;
+    protected $productService;
 
-    public function __construct(OrderService $service)
+    public function __construct(OrderService $orderService,ProductService $productService)
     {
-        $this->orderService = $service;
+        $this->orderService = $orderService;
+        $this->productService = $productService;
     }
     /**
      * Display a listing of the resource.
@@ -32,11 +35,10 @@ class OrderController extends Controller
         }
 
         $currentUser = auth()->user();
+        
+        $array = $this->orderService->showProductCart($currentUser);
 
-        dd($currentUser);
-
-
-        return view('layout.cart');
+        return view('layout.cart', $array);
     }
 
     /**
@@ -57,8 +59,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $productId = $request->product_id;
-        $product = Product::find($productId);
+        $product = Product::find($request->product_id);
 
         if(!$product){
             return json_encode([
@@ -72,63 +73,16 @@ class OrderController extends Controller
                 'msg' => 'Need Login',
             ]);
         }
+        
+        $isSuccess = $this->orderService->addProductToCart($request->product_id);
 
-        $currentUserId = auth()->id();
-        $new = config('order.status.new');
-
-        $order = Order::where('user_id',$currentUserId)
-        ->where('status', $new)
-        ->first();
-
-        if($order){
-            $total_fee = $order->total_fee + $product->price;
-        }else {
-            $total_fee = $product->price;
+        if (!$isSuccess){
+            return json_encode([
+                'status' => false,
+                'msg' => 'add not success',
+            ]);
         }
-
-        try {
-            $isCreateProductOrder = false;
-           if (!$order){
-                $orderData = [
-                    'user_id' => $currentUserId,
-                    'product_id' => $productId,
-                    'coupon_id' => 1,
-                    'total_fee' =>$total_fee,
-                    'status' => $new,
-                    'quantity' => 1,
-                ];
-
-                $order = Order::create($orderData);
-                $isCreateProductOrder = true;
-           } else {
-                $productOrder = ProductOrder::where('order_id', $order->id)
-                ->where('product_id', $product->id)
-                ->first();
-                
-                if($productOrder){
-                    $productOrder->increment('quantity');
-                }else {
-                    $isCreateProductOrder = true;
-                }
-
-                $order->update([
-                    'total_fee' => $total_fee,
-                ]);
-           }
-           if($isCreateProductOrder){
-                $orderProductData = [
-                    'product_id' => $productId,
-                    'order_id' => $order->id,
-                    'quantity' => 1,
-                    'price' => $product->price,  
-                ];  
-                
-                ProductOrder::create($orderProductData);
-           }
-        } catch (Exception $e) {
-            Log::error($e);
-        }
-
+        
         return json_encode([
             'status' => true,
         ]);
@@ -163,9 +117,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $updateQuantity= $this->orderService->changeQuantityProduct($request->product_id ,$request->quantity);
+
     }
 
     /**
@@ -174,8 +129,16 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($productId)
     {
-        //
+
+        $deletedFlag = $this->orderService->deleteProductCart($productId);
+
+        $message = "Delete success!!! ";
+        if (!$deletedFlag){
+            $message = "Delete False!!!";
+        }
+
+        return back()->with('status', $message );
     }
 }

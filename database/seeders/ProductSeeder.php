@@ -19,21 +19,17 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->truncate();
 
-        $users = User::all()->pluck('id');
-
         $data = [];
 
         for ($i = 0; $i < 50; $i++) { 
             $data[] = [
-                'user_id' => $users->random(),
-                'name' => $faker->name,
-                'price' => rand(1,2000),
-                'discount' => rand(1,2000),
+                'name' => 'IPhone' . rand(11,13) . ' Pro Max',
+                'price' => rand(1500,2000),
+                'discount' => rand(1000,1500),
                 'image' => 'product-' . rand(1,5),
                 'quantity' => rand(1,50),
                 'tag' => $faker->word,
                 'detail' => $faker->text($maxNbChars = 50),
-                'rate_star' => rand(1,5),
                 'description' => $faker->text($maxNbChars = 100),
             ];
         }

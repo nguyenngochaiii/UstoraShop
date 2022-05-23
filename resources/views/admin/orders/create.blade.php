@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Admin | Create Product')
+@section('title', 'Admin | Create Order')
 
 @section('content_header')
-<h1>Create Product</h1>
+<h1>Create Order</h1>
 @if (session('error'))
 <div class="alert alert-warning">
     {{session('error')}}
@@ -14,7 +14,7 @@
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Add Product</h3>
+        <h3 class="card-title">Add Order</h3>
     </div>
     <form action="{{ route('admin.products.store') }}" method="POST">
         @csrf

@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Events\MyEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +29,13 @@ Route::get('/', function () {
 });
 
 Route::resource('products', ProductController::class);
-Route::resource('cart', CartController::class);
 Route::resource('checkout',CheckoutController::class);
 Route::get('/my-cart',[OrderController::class, 'index'])->name('orders.index');
 Route::post('/orders',[OrderController::class, 'store'])->name('orders.store');
+Route::put('/orders/update',[OrderController::class, 'update'])->name('orders.update');
+Route::delete('/orders/{order}/',[OrderController::class, 'destroy'])->name('orders.destroy');
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['isAdmin'])->name('admin.')->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('index');
     Route::get('/products/create',[AdminProductController::class, 'create'])->name('products.create');
     Route::get('/products/index',[AdminProductController::class, 'index'])->name('products.index');
@@ -54,6 +58,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/orders/{order}/',[AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('/orders/{order}/',[AdminOrderController::class, 'destroy'])->name('orders.destroy');
 });
+
+Route::get('/pusher', function () {
+    return view('components.pusher');
+});
+
+Route::get('notifications/get', [NotificationController::class, 'getNotificationsData'])
+    ->name('notifications.get');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -14,17 +14,72 @@ class ProductService extends BaseService
         $this->productModel = $product;
     }
 
-    public function getProducts()
+    public function getProducts($searchKey)
     {
-        $products = $this->productModel::where('quantity','!=',0)->paginate(12);
+        $products = $this->productModel::where('quantity', '!=' , 0)->paginate(12);
+        
+        if ($searchKey) {
+            $products = $this->productModel::where('name','like','%' . $searchKey . '%')
+            ->paginate(12);
+        }
         
         return $products;
     }
 
-    public function showProduct()
+    public function showProduct($id)
     {
         $product = $this->productModel::findOrFail($id);
         
-        return $products;
+        return $product;
+    }
+
+    public function createProduct($data)
+    {
+        try {
+            $product = $this->productModel::create($data);
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return false;
+        }
+        
+        return $product;
+    }
+
+    public function updateProduct($data , $id)
+    {
+        $product = Product::findOrFail($id);
+
+        try {
+            $product->update($data);
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return false; //err meg
+        }
+
+        return $product;
+    }
+
+    public function editProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        return $product;
+    }
+
+
+    public function deleteProduct($id)
+    {
+        $product = Product::findOrFail($id);
+
+        try {
+            $product->delete();
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return back()->with('error','Delete Failed  Sir !!'); //err meg
+        }
+
+        return $product;
     }
 }

@@ -29,6 +29,7 @@ class User extends Authenticatable
         'postCode',
         'sex',
         'avatar',
+        'role_as',
     ];
 
     /**
@@ -73,5 +74,10 @@ class User extends Authenticatable
     public function coupons()
     {
         return $this->hasMany(Coupon::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notifications::class);
     }
 }

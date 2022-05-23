@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\Admin\OrderAdminService;
+use App\Services\OrderService;
 
 class AdminOrderController extends Controller
 {
 
-    protected $OrderAdminService;
-
-    public function __construct(OrderAdminService $service)
+    protected $orderService;
+    public function __construct(OrderService $service)
     {
-        $this->orderAdminService = $service;
+        $this->orderService = $service;
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +21,7 @@ class AdminOrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->orderAdminService->getOrders();
+        $orders = $this->orderService->showOrders();
         return view('admin.orders.index' , [
             'status' => array_flip(config('order.status')),
         ])->with(compact('orders'));

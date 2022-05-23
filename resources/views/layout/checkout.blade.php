@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CheckOut</title>
+    <title>Checkout</title>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet'
@@ -29,9 +29,43 @@
 
     @include('partials.header')
 
-    @include('partials.branding-area')
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="./"><img src="/themes/ustora/img/logo.png"></a></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
 
-    @include('partials.mainmenu-area')
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="products">Shop page</a></li>
+                        <li><a href="my-cart">Cart</a></li>
+                        <li class="active"><a href="checkout">Checkout</a></li>
+                        <li><a href="category">Category</a></li>
+                        <li><a href="others">Others</a></li>
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
 
     <div class="product-big-title-area">
         <div class="container">
@@ -106,12 +140,12 @@
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <div class="woocommerce-info">Returning customer? <a class="showlogin"
+                            <!-- <div class="woocommerce-info">Returning customer? <a class="showlogin"
                                     data-toggle="collapse" href="#login-form-wrap" aria-expanded="false"
                                     aria-controls="login-form-wrap">Click here to login</a>
-                            </div>
+                            </div> -->
 
-                            <form id="login-form-wrap" class="login collapse" method="post">
+                            <!-- <form id="login-form-wrap" class="login collapse" method="post">
 
 
                                 <p>If you have shopped with us before, please enter your details in the boxes below. If
@@ -140,7 +174,7 @@
                                 </p>
 
                                 <div class="clear"></div>
-                            </form>
+                            </form> -->
 
                             <div class="woocommerce-info">Have a coupon? <a class="showcoupon" data-toggle="collapse"
                                     href="#coupon-collapse-wrap" aria-expanded="false"
@@ -161,9 +195,9 @@
                                 <div class="clear"></div>
                             </form>
 
-                            <form enctype="multipart/form-data" action="#" class="checkout" method="post"
-                                name="checkout">
-
+                            <form enctype="multipart/form-data" action="{{ route('checkout.store') }}" class="checkout"
+                                method="post" name="checkout">
+                                @csrf
                                 <div id="customer_details" class="col2-set">
                                     <div class="col-1">
                                         <div class="woocommerce-billing-fields">
@@ -513,7 +547,7 @@
                                             <div class="clear"></div>
 
 
-                                            <div class="create-account">
+                                            <!-- <div class="create-account">
                                                 <p>Create an account by entering the information below. If you are a
                                                     returning customer please login at the top of the page.</p>
                                                 <p id="account_password_field" class="form-row validate-required">
@@ -525,7 +559,7 @@
                                                         class="input-text">
                                                 </p>
                                                 <div class="clear"></div>
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </div>
@@ -904,19 +938,23 @@
                                         <tbody>
                                             <tr class="cart_item">
                                                 <td class="product-name">
-                                                    Ship Your Idea <strong class="product-quantity">× 1</strong> </td>
+                                                    @foreach ($products as $product)
+                                                    {{ $product->name }}<strong class="product-quantity"> ×
+                                                        {{$product->pivot->quantity}}</strong></br>
+                                                    @endforeach
+                                                </td>
                                                 <td class="product-total">
-                                                    <span class="amount">£15.00</span>
+                                                    <span class="amount">${{ $total_fee }}</span>
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
 
-                                            <tr class="cart-subtotal">
+                                            <!-- <tr class="cart-subtotal">
                                                 <th>Cart Subtotal</th>
                                                 <td><span class="amount">£15.00</span>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
 
                                             <tr class="shipping">
                                                 <th>Shipping and Handling</th>
@@ -931,7 +969,7 @@
 
                                             <tr class="order-total">
                                                 <th>Order Total</th>
-                                                <td><strong><span class="amount">£15.00</span></strong> </td>
+                                                <td><strong><span class="amount">${{ $total_fee }}</span></strong> </td>
                                             </tr>
 
                                         </tfoot>
@@ -983,10 +1021,8 @@
 
                                         <div class="form-row place-order">
 
-                                            <input type="submit" data-value="Place order" value="Place order"
-                                                id="place_order" name="woocommerce_checkout_place_order"
-                                                class="button alt">
-
+                                            <button type="submit" data-value="{{ route('checkout.store') }}"
+                                                id="btn_place_order" class="button alt">Place order</button>
 
                                         </div>
 
@@ -1022,6 +1058,15 @@
     <!-- Main Script -->
     <script src="./themes/ustora/js/main.js"></script>
 
+    <script>
+    $(function() {
+        // $('#btn_place_order').click(function() {
+
+
+
+        // });
+    });
+    </script>
     <!-- Slider -->
     <script type="text/javascript" src="./themes/ustora/js/bxslider.min.js"></script>
     <script type="text/javascript" src="./themes/ustora/js/script.slider.js"></script>

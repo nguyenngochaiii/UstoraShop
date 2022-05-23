@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_ico_only' => true,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'Admin',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -235,6 +235,27 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        [
+            'icon'  => 'far fa-bell',
+            'topnav_right' => true,
+        ],
+        [
+            'type'         => 'navbar-notification',
+            'id'           => 'my-notification',      // An ID attribute (required).
+            'class'           => 'notification-admin',      // An ID attribute (required).
+            'icon'         => 'fas fa-bell',          // A font awesome icon (required).
+            'icon_color'   => 'warning',              // The initial icon color (optional).
+            'label'        => 0,                      // The initial label for the badge (optional).
+            'label_color'  => 'primary',               // The initial badge color (optional).
+            'url'          => 'notifications/show',   // The url to access all notifications/elements (required).
+            'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
+            'dropdown_mode'   => true,                // Enables the dropdown mode (optional).
+            'dropdown_flabel' => 'All notifications', // The label for the dropdown footer link (optional).
+            'update_cfg'   => [
+                'url' => 'notifications/get',         // The url to periodically fetch new data (optional).
+                'period' => 30,                       // The update period for get new data (in seconds, optional).
+            ],
+        ],
 
         // Sidebar items:
         [
@@ -265,69 +286,20 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'Manage',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text'    => 'Products',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'List',
-                            'url'  => 'admin/products/index',
-                        ],
-                        [
-                            'text' => 'Create',
-                            'url'  => 'admin/products/create',
-                        ],
-                    ],
-                ],
-                [
-                    'text'    => 'User',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'List',
-                            'url'  => 'admin/users/index',
-                        ],
-                        [
-                            'text' => 'Create',
-                            'url'  => 'admin/users/create',
-                        ],
-                    ],
-                ],
-                [
-                    'text'    => 'Order',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'List',
-                            'url'  => 'admin/orders/index',
-                        ],
-                        [
-                            'text' => 'Create',
-                            'url'  => 'admin/orders/create',
-                        ],
-                    ],
-                ],
-            ],
+            'text' => 'Products',
+            'url'  => 'admin/products/index',
+            'icon' => '',
         ],
-        // ['header' => 'labels'],
-        // [
-        //     'text'       => 'important',
-        //     'icon_color' => 'red',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url'        => '#',
-        // ],
+        [
+            'text' => 'Users',
+            'url'  => 'admin/users/index',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        [
+            'text' => 'Orders',
+            'url'  => 'admin/orders/index',
+            'icon' => '',
+        ],
     ],
 
     /*
