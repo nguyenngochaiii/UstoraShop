@@ -75,4 +75,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Coupon::class);
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notifications::class);
+    }
 }

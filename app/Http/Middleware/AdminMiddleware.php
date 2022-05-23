@@ -16,18 +16,16 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        // return $next($request);
-        if (Auth::check()) {
+        $currentUser = auth()->user();
+        if ($currentUser->role_as == '0') { // check user
 
-            if (Auth::user->role_as == '1') {
-
-                return $next($request);
-            }else{
-                
-                return redirect()->with('status','Access Denied!, as you are not an admin'); 
-            } 
-        }else {
-            return redirect()->with('status','Please Login First!! '); 
-        }
+            return view('index');
+        }else{  
+            return $next($request); 
+        } 
+        // }
+        // else {
+        //     return redirect('login')->with('status','Please Login First!! '); 
+        // }
     }
 }

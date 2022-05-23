@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
+use App\Events\MyEvent;
+use App\Models\Notification;
 
 class CheckoutController extends Controller
 {
@@ -13,7 +16,20 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('layout.checkout');
+        $currentUser = auth()->user();
+        $orderNew = $currentUser->orders()->where('status' , config('order.status.new'))->first();
+
+        $total_fee = $orderNew->total_fee;
+
+        $order = $currentUser->orders()->where('status', config('order.status.new'))
+        ->first();
+
+        $products = $order ? $order->products : [];
+
+        return view('layout.checkout',[
+            'total_fee' => $total_fee,
+            'products' => $products,
+        ]);
     }
 
     /**
@@ -34,7 +50,29 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $currentUser = auth()->user();
+        
+        event(new MyEvent([
+            'username' => $currentUser->name,
+        ]));
+
+        $message = $currentUser->name . ' đã đặt hàng';
+
+        $data = [
+            'user_id' => auth()->id(),
+            'content' => $message,
+            'read' => 0, //unread
+        ];
+
+        try {
+            $notifications = Notification::create($data);
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return false;
+        }
+
+        return redirect('checkout');
     }
 
     /**
