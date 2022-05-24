@@ -22,12 +22,20 @@ class OrderService extends BaseService
         $this->productModel = $product;
     }
 
-    public function showOrders()
+    public function showOrders($searchKey)
     {
-        $orders = $this->orderModel::paginate(20);
+        $orders = $this->orderModel::where('quantity', '!=' , 0)->paginate(12);
+
+
+        if ($searchKey) {
+            $products = $this->orderModel::where('name','like','%' . $searchKey . '%')
+            ->paginate(12);
+        }
 
         return $orders;
     }
+
+
 
     public function showProductCart($user)
     {
@@ -102,9 +110,10 @@ class OrderService extends BaseService
                 $orderProductData = [
                     'product_id' => $productId,
                     'order_id' => $order->id,
+                    'name' => $product->name,
                     'quantity' => 1,
                     'price' => $product->price,  
-                ];  
+                ];
                 
                 $this->productOrderModel::create($orderProductData);
            }

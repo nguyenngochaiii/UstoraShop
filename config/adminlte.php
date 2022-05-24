@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -246,8 +246,8 @@ return [
             'icon'         => 'fas fa-bell',          // A font awesome icon (required).
             'icon_color'   => 'warning',              // The initial icon color (optional).
             'label'        => 0,                      // The initial label for the badge (optional).
-            'label_color'  => 'primary',               // The initial badge color (optional).
-            'url'          => 'notifications/show',   // The url to access all notifications/elements (required).
+            'label_color'  => 'danger',               // The initial badge color (optional).
+            'url'          => 'notifications/index',   // The url to access all notifications/elements (required).
             'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
             'dropdown_mode'   => true,                // Enables the dropdown mode (optional).
             'dropdown_flabel' => 'All notifications', // The label for the dropdown footer link (optional).

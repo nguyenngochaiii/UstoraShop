@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Product::class, 'product_orders')->withPivot('quantity');
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }

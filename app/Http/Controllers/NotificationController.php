@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\Notification;
-
+use Carbon\Carbon;
 class NotificationController extends Controller
 {
+    public function index()
+    {
+        $notifications = Notification::paginate(12);
+
+        return view('admin.notifications.index',compact('notifications'));
+    }
+
     public function getNotificationsData(Request $request){
         // For the sake of simplicity, assume we have a variable called
         // $notifications with the unread notifications. Each notification
@@ -18,47 +25,17 @@ class NotificationController extends Controller
         // At next, we define a hardcoded variable with the explained format,
         // but you can assume this data comes from a database query.
 
-        $messages = Notification::pluck('content');
+        $messages = Notification::where('read','0')->get();
+        
+        $notifications = [];
 
-
-        // dd($messages);
-        $notifications = [
-            // [
-            //     'icon' => 'fas fa-fw fa-envelope',
-            //     'text' => rand(0, 10) . ' new messages',
-            //     'time' => rand(0, 10) . ' minutes',
-            // ],
-            [
+        foreach ($messages as $message) {
+            $notifications[] = [
                 'icon' => 'fas fa-fw fa-user text-primary',
-                'text' => $messages[0],
-                'time' => rand(0, 60) . ' minutes',
-            ],
-            [
-                'icon' => 'fas fa-fw fa-user text-primary',
-                'text' => $messages[1],
-            ],
-            [
-                'icon' => 'fas fa-fw fa-user text-primary',
-                'text' => $messages[2],
-            ],
-            [
-                'icon' => 'fas fa-fw fa-user text-primary',
-                'text' => $messages[3],
-            ],
-            [
-                'icon' => 'fas fa-fw fa-user text-primary',
-                'text' => $messages[4],
-            ],
-            // [
-            //     'icon' => 'fas fa-fw fa-file text-danger',
-            //     'text' => rand(0, 10) . ' new reports',
-            //     'time' => rand(0, 60) . ' minutes',
-            // ],
-        ];
-
-        // dd($notifications);
-
-        // Now, we create the notification dropdown main content.
+                'text' => $message->content,
+                'order_id' => $message->order_id, 
+            ];
+        }
 
         $dropdownHtml = '';
 
@@ -68,8 +45,8 @@ class NotificationController extends Controller
             // $time = "<span class='float-right text-muted text-sm'>
             //         {$not['time']}
             //         </span>";
-
-            $dropdownHtml .= "<a href='#' class='dropdown-item'>
+            //
+            $dropdownHtml .= "<a href='" . route('admin.orders.show', $not['order_id'] ) . " ' class='dropdown-item'>
                                 {$icon}{$not['text']}
                             </a>";
 
