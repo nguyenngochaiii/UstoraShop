@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\OrderService;
+use App\Models\Notification;
+use App\Models\ProductOrder;
 
 class AdminOrderController extends Controller
 {
@@ -64,6 +67,23 @@ class AdminOrderController extends Controller
      */
     public function show($id)
     {
+        $products = ProductOrder::where('order_id',$id)->get();
+
+        $data = [
+            'read' => 1, //read
+        ];
+
+        $notifications = Notification::where('order_id', $id);
+
+        try {
+            $notifications->update($data);
+        } catch (\Exception $e) {
+            \Log::error($e);
+            
+            return false;
+        }
+        
+        return view('admin.orders.showOrderUser', compact('products'));
     }
 
     /**

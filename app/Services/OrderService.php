@@ -110,9 +110,10 @@ class OrderService extends BaseService
                 $orderProductData = [
                     'product_id' => $productId,
                     'order_id' => $order->id,
+                    'name' => $product->name,
                     'quantity' => 1,
                     'price' => $product->price,  
-                ];  
+                ];
                 
                 $this->productOrderModel::create($orderProductData);
            }

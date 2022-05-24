@@ -5,11 +5,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminOrderController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Events\MyEvent;
 
@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware(['isAdmin'])->name('admin.')->group(function 
     Route::get('/orders/index',[AdminOrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/create',[AdminOrderController::class, 'create'])->name('orders.create');
     Route::post('/orders/',[AdminOrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/{order}',[AdminOrderController::class, 'show'])->name('orders.show');
     Route::get('/orders/{order}/edit',[AdminOrderController::class, 'edit'])->name('orders.edit');
     Route::put('/orders/{order}/',[AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('/orders/{order}/',[AdminOrderController::class, 'destroy'])->name('orders.destroy');
@@ -65,6 +66,9 @@ Route::get('/pusher', function () {
 
 Route::get('notifications/get', [NotificationController::class, 'getNotificationsData'])
     ->name('notifications.get');
+
+Route::get('notifications/index', [NotificationController::class, 'index'])
+->name('notifications.index');
 
 
 Route::get('/dashboard', function () {

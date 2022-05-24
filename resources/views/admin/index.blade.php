@@ -10,7 +10,7 @@
 @stop
 
 @section('css')
-<link rel="stylesheet" href="/css/admin_custom.css">
+<!-- <link rel="stylesheet" href="/css/admin_custom.css"> -->
 @stop
 
 @section('js')
@@ -28,12 +28,6 @@ channel.bind('my-event', function(data) {
     var numberNoti = $('#my-notification span.badge').text();
     numberNoti++;
     $('#my-notification span.badge').text(numberNoti);
-
-    var string = `<a href="#" class="item-notification"> ${data.message.username} vừa đặt hàng </a> `;
-
-    $('.adminlte-dropdown-content').prepend(string);
-
-
 });
 </script>
 @stop

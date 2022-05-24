@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->bigInteger('order_id')->nullable();
             $table->integer('type')->nullable();
             $table->tinyInteger('read')->nullable();
             $table->tinyInteger('trash')->nullable();

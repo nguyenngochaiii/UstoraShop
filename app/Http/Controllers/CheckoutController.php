@@ -51,6 +51,8 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         $currentUser = auth()->user();
+
+        $orderId = $currentUser->orders()->where('status', config('order.status.new'))->pluck('id')->first();
         
         event(new MyEvent([
             'username' => $currentUser->name,
@@ -60,6 +62,7 @@ class CheckoutController extends Controller
 
         $data = [
             'user_id' => auth()->id(),
+            'order_id' => $orderId,
             'content' => $message,
             'read' => 0, //unread
         ];
