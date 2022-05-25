@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Events\MyEvent;
 
@@ -58,6 +59,15 @@ Route::prefix('admin')->middleware(['isAdmin'])->name('admin.')->group(function 
     Route::get('/orders/{order}/edit',[AdminOrderController::class, 'edit'])->name('orders.edit');
     Route::put('/orders/{order}/',[AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('/orders/{order}/',[AdminOrderController::class, 'destroy'])->name('orders.destroy');
+
+
+    Route::get('/categories/index',[AdminCategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/create',[AdminCategoryController::class, 'create'])->name('categories.create');
+    Route::post('/categories/',[AdminCategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categories/{category}',[AdminCategoryController::class, 'show'])->name('categories.show');
+    Route::get('/categories/{category}/edit',[AdminCategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categories/{category}/',[AdminCategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/categories/{category}/',[AdminCategoryController::class, 'destroy'])->name('categories.destroy');
 });
 
 Route::get('/pusher', function () {
