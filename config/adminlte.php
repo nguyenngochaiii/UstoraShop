@@ -300,6 +300,11 @@ return [
             'url'  => 'admin/orders/index',
             'icon' => '',
         ],
+        [
+            'text' => 'Categories',
+            'url'  => 'admin/categories/index',
+            'icon' => '',
+        ],
     ],
 
     /*
