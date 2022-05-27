@@ -20,7 +20,7 @@
     <div class="card-header">
         <h3 class="card-title">Edit Product</h3>
     </div>
-    <form action="{{ route('admin.products.update', $product->id) }}" method="POST">
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="card-body">
@@ -53,6 +53,15 @@
                 <input type="text" name="discount" class="form-control" id="InputDiscount" placeholder="Discount"
                     value=" {{ $product->discount }}">
                 @error('discount')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputImage">Image</label>
+                <br>
+                <img src="{{ url('public/Image/'.$product->image) }}" style="height: 100px; width: 150px;">
+                <input type="file" name="image" class="form-control" id="InputImage" value=" {{ $product->image }}">
+                @error('image')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

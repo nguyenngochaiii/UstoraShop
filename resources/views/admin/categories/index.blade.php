@@ -34,7 +34,7 @@
                 </div>
                 <a href="{{route('admin.categories.create')}}">
                     <button class="btn btn-primary btn-create ">
-                        Create
+                        <i class="fa fa-plus"></i>
                     </button>
                 </a>
             </div>

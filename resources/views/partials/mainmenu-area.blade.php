@@ -13,12 +13,8 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Home</a></li>
                     <li><a href="products">Shop page</a></li>
-                    <li><a href="product">Product</a></li>
                     <li><a href="cart">Cart</a></li>
                     <li><a href="checkout">Checkout</a></li>
-                    <li><a href="category">Category</a></li>
-                    <li><a href="others">Others</a></li>
-                    <li><a href="contact">Contact</a></li>
                 </ul>
             </div>
         </div>

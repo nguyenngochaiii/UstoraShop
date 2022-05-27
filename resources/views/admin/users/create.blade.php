@@ -21,7 +21,7 @@
     <div class="card-header">
         <h3 class="card-title">Add User</h3>
     </div>
-    <form action="{{ route('admin.users.store') }}" method="POST">
+    <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -45,8 +45,26 @@
                 <input type="text" name="email" class="form-control" id="InputEmail" value="{{ old('email')}}">
             </div>
             <div class="form-group">
-                <label for="InputAddress">Address<span class="text-danger">*</span></label>
-                <input type="text" name="address" class="form-control" id="InputAddress" value=" {{ old('address') }}">
+                <label for="InputCountry">Country<span class="text-danger">*</span></label>
+                <input type="text" name="country" class="form-control" id="InputCountry" value=" {{ old('country') }}">
+            </div>
+            <div class="form-group">
+                <label for="InputStreetAddress">streetAddress<span class="text-danger">*</span></label>
+                <input type="text" name="streetAddress" class="form-control" id="InputStreetAddress"
+                    value=" {{ old('streetAddress') }}">
+            </div>
+            <div class="form-group">
+                <label for="InputCity">City<span class="text-danger">*</span></label>
+                <input type="text" name="city" class="form-control" id="InputCity" value=" {{ old('city') }}">
+            </div>
+            <div class="form-group">
+                <label for="InputPostCode">postCode<span class="text-danger">*</span></label>
+                <input type="text" name="postcode" class="form-control" id="InputPostCode"
+                    value=" {{ old('postCode') }}">
+            </div>
+            <div class="form-group">
+                <label for="InputAvatar">Avatar<span class="text-danger">*</span></label>
+                <input type="file" name="avatar" class="form-control" id="InputAvatar">
             </div>
             <div class="form-group">
                 <label for="InputSex">Sex<span class="text-danger">*</span></label>

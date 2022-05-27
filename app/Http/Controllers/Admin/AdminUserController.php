@@ -47,16 +47,14 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only([
-            'name',
-            'username',
-            'password',
-            'phone',
-            'email',
-            'address',
-            'sex',
-            'date_of_birth',
-        ]);
+        $data = $request->all();
+        
+        if($request->file('avatar')){
+            $file= $request->file('avatar');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $data['avatar']= $filename;
+        }
 
         try {
             $user = User::create($data);
@@ -67,7 +65,7 @@ class AdminUserController extends Controller
             
         }
         
-        return redirect()->route('admin.users.edit' , $user->id)->with('status', 'Create success!');
+        return back()->with('status', 'Create success!');
     }
 
     /**
@@ -106,22 +104,17 @@ class AdminUserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $data = $request->only([
-            'name',
-            'username',
-            'password',
-            'phone',
-            'email',
-            'country',
-            'streetAddress',
-            'city',
-            'postCode',
-            'sex',
-            'date_of_birth',
-        ]);
+        $data = $request->all();
+
+        if($request->file('avatar')){
+            $file= $request->file('avatar');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $data['avatar']= $filename;
+        }
 
         try {
-            $user = User::update($data);
+            $user->update($data);
         } catch (\Exception $e) {
             \Log::error($e);
             
@@ -129,7 +122,7 @@ class AdminUserController extends Controller
             
         }
 
-        return redirect()->route('admin.users.edit' , $user->id)->with('status', 'Create success!');
+        return back()->with('status', 'Update success!');
     }
 
     /**
@@ -140,7 +133,7 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->userService->findOrFail($id);
 
         try {
             $user->delete();

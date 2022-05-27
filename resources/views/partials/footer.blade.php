@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-sm-6">
+            <!-- <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
                     <h2 class="footer-wid-title">Newsletter</h2>
                     <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to
@@ -56,7 +56,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div> <!-- End footer top area -->

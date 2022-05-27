@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Events\MyEvent;
 use App\Models\Notification;
+use App\Models\Product;
 
 class CheckoutController extends Controller
 {
@@ -26,9 +27,12 @@ class CheckoutController extends Controller
 
         $products = $order ? $order->products : [];
 
+        $listProduct = Product::inRandomOrder()->limit(5)->paginate(4);
+
         return view('layout.checkout',[
             'total_fee' => $total_fee,
             'products' => $products,
+            'listProduct' => $listProduct,
         ]);
     }
 

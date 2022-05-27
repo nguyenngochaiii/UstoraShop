@@ -18,7 +18,7 @@ class UserService extends BaseService
 
     public function getUsers()
     {
-        $users = $this->userModel::paginate(20);
+        $users = $this->userModel->orderBy('id', 'desc')->paginate(20);
 
         return $users;
     }

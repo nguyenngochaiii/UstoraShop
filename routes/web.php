@@ -38,6 +38,7 @@ Route::delete('/orders/{order}/',[OrderController::class, 'destroy'])->name('ord
 
 Route::prefix('admin')->middleware(['isAdmin'])->name('admin.')->group(function () {
     Route::get('/',[AdminController::class, 'index'])->name('index');
+    
     Route::get('/products/create',[AdminProductController::class, 'create'])->name('products.create');
     Route::get('/products/index',[AdminProductController::class, 'index'])->name('products.index');
     Route::post('/products/',[AdminProductController::class, 'store'])->name('products.store');
@@ -68,6 +69,15 @@ Route::prefix('admin')->middleware(['isAdmin'])->name('admin.')->group(function 
     Route::get('/categories/{category}/edit',[AdminCategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{category}/',[AdminCategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{category}/',[AdminCategoryController::class, 'destroy'])->name('categories.destroy');
+
+
+    Route::get('/tags/index',[AdminTagController::class, 'index'])->name('tags.index');
+    Route::get('/tags/create',[AdminTagController::class, 'create'])->name('tags.create');
+    Route::post('/tags/',[AdminTagController::class, 'store'])->name('tags.store');
+    Route::get('/tags/{tag}',[AdminTagController::class, 'show'])->name('tags.show');
+    Route::get('/tags/{tag}/edit',[AdminTagController::class, 'edit'])->name('tags.edit');
+    Route::put('/tags/{tag}/',[AdminTagController::class, 'update'])->name('tags.update');
+    Route::delete('/tags/{tag}/',[AdminTagController::class, 'destroy'])->name('tags.destroy');
 });
 
 Route::get('/pusher', function () {

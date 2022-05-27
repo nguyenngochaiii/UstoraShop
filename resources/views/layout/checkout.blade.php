@@ -58,9 +58,6 @@
                         <li><a href="products">Shop page</a></li>
                         <li><a href="my-cart">Cart</a></li>
                         <li class="active"><a href="checkout">Checkout</a></li>
-                        <li><a href="category">Category</a></li>
-                        <li><a href="others">Others</a></li>
-                        <li><a href="contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -85,54 +82,33 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="single-sidebar">
+                    <!-- <div class="single-sidebar">
                         <h2 class="sidebar-title">Search Products</h2>
                         <form action="">
                             <input type="text" placeholder="Search products...">
                             <input type="submit" value="Search">
                         </form>
-                    </div>
+                    </div> -->
 
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
+                        @foreach ($listProduct as $product)
                         <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2022</a></h2>
+                            <img src="/themes/ustora/img/{{$product->image}}.jpg" class="recent-thumb" alt="">
+                            <h2><a href="/products/{{$product->id}}">{{$product->name}}</a></h2>
                             <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
+                                <ins>${{$product->price}}</ins> <del>${{$product->discount}}</del>
                             </div>
                         </div>
-                        <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2022</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2022</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="./themes/ustora/img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">Sony Smart TV - 2022</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Recent Posts</h2>
                         <ul>
-                            <li><a href="single-product.html">Sony Smart TV - 2022</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2022</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2022</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2022</a></li>
-                            <li><a href="single-product.html">Sony Smart TV - 2022</a></li>
+                            @foreach ($listProduct as $product)
+                            <li><a href="/products/{{$product->id}}">{{$product->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

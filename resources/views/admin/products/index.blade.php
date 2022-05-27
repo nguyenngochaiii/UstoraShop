@@ -34,7 +34,7 @@
                 </div>
                 <a href="{{route('admin.products.create')}}">
                     <button class="btn btn-primary btn-create ">
-                        Create
+                        <i class="fa fa-plus"></i>
                     </button>
                 </a>
             </div>
@@ -49,6 +49,7 @@
                             <th>Quantity</th>
                             <th>Discount</th>
                             <th>Tag</th>
+                            <th>Image</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -61,6 +62,10 @@
                             <td>{{$product->quantity}}</td>
                             <td>${{$product->discount}}</td>
                             <td>{{$product->tag}}</td>
+                            <td>
+                                <img src="{{ url('public/Image/'.$product->image) }}"
+                                    style="height: 100px; width: 150px;">
+                            </td>
                             <td style="width:30px">
                                 <button class="btn btn-danger btn-delete"
                                     data-link="{{ route('admin.products.destroy' , $product->id) }}">Delete</button>

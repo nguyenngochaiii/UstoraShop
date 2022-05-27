@@ -49,13 +49,20 @@ class AdminProductController extends Controller
     {
         $data = $request->all();
 
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $data['image']= $filename;
+        }
+
         $product = $this->productService->createProduct($data);
 
         if (!$product) {
             return back()->withInput($data)->with('error','Create Failed  Sir !!');
         }
          
-        return redirect()->route('admin.products.edit' , $product->id)->with('status', 'Create success!');
+        return back()->withInput($data)->with('status', 'Create success!');
     }
 
     /**
@@ -93,7 +100,15 @@ class AdminProductController extends Controller
     public function update(UpdateProductRequest $request, $id)
     {
         $data = $request->all();
-        
+
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $data['image']= $filename;
+        }
+
+        // dd($data,$request->file('image'));
         $product = $this->productService->updateProduct($data , $id);
 
         if(!$product){

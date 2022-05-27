@@ -34,7 +34,7 @@
                 </div>
                 <a href="{{route('admin.orders.create')}}">
                     <button class="btn btn-primary btn-create ">
-                        Create
+                        <i class="fa fa-plus"></i>
                     </button>
                 </a>
             </div>
@@ -46,9 +46,6 @@
                             <th style="width: 10px">STT</th>
                             <th>User</th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
                             <th>Quantity</th>
                             <th>Status</th>
                             <th>Note</th>
@@ -62,9 +59,6 @@
                             <td>{{$loop->iteration + ($orders->currentPage() -  1) * 20}}.</td>
                             <td>{{ isset($order->user) ? $order->user->name : ''}}</td>
                             <td>{{$order->name}}</td>
-                            <td>{{$order->email}}</td>
-                            <td>{{$order->phone}}</td>
-                            <td>{{$order->address}}</td>
                             <td>{{$order->quantity}}</td>
                             <td>{{$status[$order->status]}}</td>
                             <td>{{$order->note}}</td>

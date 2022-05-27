@@ -22,7 +22,10 @@
                         @foreach( $notifications as $notification)
                         <tr>
                             <td>{{$loop->iteration + ($notifications->currentPage() -  1) * 12}}.</td>
-                            <td>{{$notification->content}}</td>
+                            <td>
+                                <a style="color: #111;"
+                                    href="{{ route('admin.orders.show' , $notification->id)}}">{{$notification->content}}</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -34,7 +34,7 @@
                 </div>
                 <a href="{{route('admin.users.create')}}">
                     <button class="btn btn-primary btn-create ">
-                        Create
+                        <i class="fa fa-plus"></i>
                     </button>
                 </a>
             </div>
@@ -48,6 +48,7 @@
                             <th>Email</th>
                             <th>Address</th>
                             <th>Phone</th>
+                            <th>Avatar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,11 @@
                             <td>${{$user->email}}</td>
                             <td>{{$user->streetAddress}}, {{$user->city}}, {{$user->country}}</td>
                             <td>{{$user->phone}}</td>
+                            <td>
+                                <img src="{{ url('public/Image/'.$user->avatar) }}"
+                                    style="height: 100px; width: 150px;">
+                            </td>
+                            </td>
                             <td style="width:30px">
                                 <button class="btn btn-danger btn-delete"
                                     data-link="{{ route('admin.users.destroy' , $user->id) }}">Delete</button>

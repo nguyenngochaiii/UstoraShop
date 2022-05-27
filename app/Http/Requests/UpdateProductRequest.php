@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +26,10 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:products',
+            'name' => [
+                'required',
+                Rule::unique('products')->ignore($this->product),
+            ],
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
         ];

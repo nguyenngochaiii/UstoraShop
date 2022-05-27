@@ -52,11 +52,13 @@ class OrderService extends BaseService
      
         $countProducts = count($products);
 
+        $listProduct = Product::inRandomOrder()->limit(5)->paginate(4);
 
         return compact('products', 
             'quantityArr',
             'totalPrice',
-            'countProducts'
+            'countProducts',
+            'listProduct',
         );
     }
 
@@ -115,7 +117,7 @@ class OrderService extends BaseService
                     'price' => $product->price,  
                 ];
                 
-                $this->productOrderModel::create($orderProductData);
+                $this->productOrderModel->create($orderProductData);
            }
         } catch (Exception $e) {
             Log::error($e);

@@ -16,11 +16,11 @@ class ProductService extends BaseService
 
     public function getProducts($searchKey)
     {
-        $products = $this->productModel::where('quantity', '!=' , 0)->paginate(12);
+        $products = $this->productModel->where('quantity', '!=' , 0)->orderBy('id', 'desc')->paginate(12);
         
         if ($searchKey) {
-            $products = $this->productModel::where('name','like','%' . $searchKey . '%')
-            ->paginate(12);
+            $products = $this->productModel->where('name','like','%' . $searchKey . '%')
+            ->orderBy('id', 'desc')->paginate(12);
         }
         
         return $products;
@@ -28,7 +28,7 @@ class ProductService extends BaseService
 
     public function showProduct($id)
     {
-        $product = $this->productModel::findOrFail($id);
+        $product = $this->productModel->findOrFail($id);
         
         return $product;
     }
@@ -36,9 +36,9 @@ class ProductService extends BaseService
     public function createProduct($data)
     {
         try {
-            $product = $this->productModel::create($data);
+            $product = $this->productModel->create($data);
         } catch (\Exception $e) {
-            \Log::error($e);
+            \Log->error($e);
             
             return false;
         }
@@ -48,12 +48,12 @@ class ProductService extends BaseService
 
     public function updateProduct($data , $id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->productModel->findOrFail($id);
 
         try {
             $product->update($data);
         } catch (\Exception $e) {
-            \Log::error($e);
+            \Log->error($e);
             
             return false; //err meg
         }
@@ -63,23 +63,24 @@ class ProductService extends BaseService
 
     public function editProduct($id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->productModel->findOrFail($id);
         return $product;
     }
 
 
     public function deleteProduct($id)
     {
-        $product = Product::findOrFail($id);
+        $product = $this->productModel->findOrFail($id);
 
         try {
             $product->delete();
         } catch (\Exception $e) {
-            \Log::error($e);
+            \Log->error($e);
             
             return back()->with('error','Delete Failed  Sir !!'); //err meg
         }
 
         return $product;
     }
+
 }

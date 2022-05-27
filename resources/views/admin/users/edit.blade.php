@@ -20,7 +20,7 @@
     <div class="card-header">
         <h3 class="card-title">Edit User</h3>
     </div>
-    <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+    <form action="{{ route('admin.users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="card-body">
@@ -65,10 +65,34 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="InputAddress">Address</label>
-                <input type="text" name="address" class="form-control" id="InputAddress" placeholder="address"
-                    value=" {{ $user->address }}">
-                @error('address')
+                <label for="InputCountry">Country</label>
+                <input type="text" name="country" class="form-control" id="InputCountry" placeholder="country"
+                    value=" {{ $user->country }}">
+                @error('country')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputStreetAddress">streetAddress</label>
+                <input type="text" name="streetAddress" class="form-control" id="InputStreetAddress"
+                    placeholder="streetAddress" value=" {{ $user->streetAddress }}">
+                @error('streetAddress')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputCity">City</label>
+                <input type="text" name="city" class="form-control" id="InputCity" placeholder="city"
+                    value=" {{ $user->city }}">
+                @error('city')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputPostCode">postCode</label>
+                <input type="text" name="postcode" class="form-control" id="InputPostCode" placeholder="address"
+                    value=" {{ $user->postCode }}">
+                @error('postCode')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -77,6 +101,15 @@
                 <input type="text" name="sex" class="form-control" id="InputSex" placeholder="sex"
                     value=" {{ $user->sex }}">
                 @error('sex')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="InputAvatar">Avatar</label>
+                <br>
+                <img src="{{ url('public/Image/'.$user->avatar) }}" style="height: 100px; width: 150px;">
+                <input type="file" name="avatar" class="form-control" id="InputAvatar" value=" {{ $user->avatar }}">
+                @error('avatar')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

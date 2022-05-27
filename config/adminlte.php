@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => 'Admin',
+    'logo' => 'UStora',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'admin',
+    'dashboard_url' => 'Admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -275,20 +275,20 @@ return [
         //     'label_color' => 'success',
         // ],
         ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         [
             'text' => 'Products',
             'url'  => 'admin/products/index',
-            'icon' => '',
+            'icon' => 'fas fa-cube',
         ],
         [
             'text' => 'Users',
@@ -298,12 +298,17 @@ return [
         [
             'text' => 'Orders',
             'url'  => 'admin/orders/index',
-            'icon' => '',
+            'icon' => 'fas fa-shopping-cart',
         ],
         [
             'text' => 'Categories',
             'url'  => 'admin/categories/index',
-            'icon' => '',
+            'icon' => 'fas fa-cubes',
+        ],
+        [
+            'text' => 'Tags',
+            'url'  => 'admin/tags/index',
+            'icon' => 'fas fa-tag',
         ],
     ],
 

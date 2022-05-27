@@ -4,6 +4,11 @@
 
 @section('content_header')
 <h1>Create Product</h1>
+@if (session('status'))
+<div class="alert alert-success">
+    {{session('status')}}
+</div>
+@endif
 @if (session('error'))
 <div class="alert alert-warning">
     {{session('error')}}
@@ -16,7 +21,7 @@
     <div class="card-header">
         <h3 class="card-title">Add Product</h3>
     </div>
-    <form action="{{ route('admin.products.store') }}" method="POST">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -52,6 +57,25 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="InputImage">Image<span class="text-danger">*</span></label>
+                <input type="file" name="image" class="form-control" id="InputImage">
+                @error('image')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <!-- <div class="form-group">
+                <label for="InputFile">Image<span class="text-danger">*</span></label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="InputFile">
+                        <label class="custom-file-label" for="InputFile">Choose file</label>
+                    </div>
+                </div>
+                @error('image')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div> -->
+            <div class="form-group">
                 <label for="InputTag">Tag<span class="text-danger">*</span></label>
                 <input type="text" name="tag" class="form-control" id="InputTag" placeholder="Tag"
                     value="{{ old('tag')}}">
@@ -73,6 +97,5 @@
 
 @section('js')
 <script>
-console.log('Hi!');
 </script>
 @stop
